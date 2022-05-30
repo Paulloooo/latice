@@ -3,6 +3,7 @@ package fr.unilim.iut.latice_.controller;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
+import fr.unilim.iut.latice.view.TileGameView;
 import fr.unilim.iut.latice_.Application.play.Player;
 import fr.unilim.iut.latice_.tools.TileGameTools;
 import javafx.fxml.FXML;
@@ -26,23 +27,53 @@ public class LaticeController {
 	Deck deckj2 = new Deck();
 	Rack rackj1 = new Rack();
 	Rack rackj2 = new Rack();
-
+	
 	@FXML
 	private ImageView imgdeck1;
 	
-	public void initDecks() {
+	@FXML
+	private ImageView img2deck1;
+
+	@FXML
+	private ImageView img3deck1;
+	
+	@FXML
+	private ImageView img4deck1;
+	
+	@FXML
+	private ImageView img5deck1;
+	
+	@FXML
+	private ImageView imgdeck2;
+	
+	@FXML
+	private ImageView img2deck2;
+	
+	@FXML
+	private ImageView img3deck2;
+	
+	@FXML
+	private ImageView img4deck2;
+	
+	@FXML
+	private ImageView img5deck2;
+	
+	
+	public void initialize() throws FileNotFoundException {
 		deckj1.buildDeck(StdDeck.tiles);
 		deckj2.buildDeck(StdDeck.tiles);
 		rackj1.buildRack(deckj1.getDeck());
 		rackj2.buildRack(deckj2.getDeck());
-		
-	}
-	
-	public void initialize() throws FileNotFoundException {
+	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
+	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
+	    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
+	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+	    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
+	    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
+	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
+	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
+	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));		
 
-		Tile tile = new Tile(Color.NIGHTBLUE,Shape.BIRD,null);
-		String path = TileGameTools.generateTilePath(tile);
-		Image imageChargee = TileGameTools.loadCardImage(path);
-	    imgdeck1.setImage(imageChargee);		
 	}
 }

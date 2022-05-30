@@ -18,13 +18,9 @@ public class FXLaticeApplication extends Application{
 		Parent content = FXMLLoader.load(getClass().getResource("LaticeApplicationFX.fxml"));
 		Scene scene = new Scene(content);
 
-
-
-		// rattache la Scene au container Stage 
 		primaryStage.setScene(scene);
 
-		// Specifie un titre a la fenetre
-	    primaryStage.setTitle("Latice");
+		primaryStage.setTitle("Latice");
 	    
 		primaryStage.show();
 	}

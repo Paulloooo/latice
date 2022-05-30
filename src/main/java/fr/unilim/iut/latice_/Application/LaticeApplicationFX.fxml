@@ -506,7 +506,7 @@
          <top>
             <Label text="LATICE  " BorderPane.alignment="CENTER">
                <font>
-                  <Font name="Comic Sans MS" size="50.0" />
+                  <Font name="Candara" size="50.0" />
                </font>
             </Label>
          </top>
@@ -530,10 +530,10 @@
                      </VBox.margin>
                   </Label>
                   <ImageView fx:id="imgdeck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img2deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img3deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img4deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img5deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </left>
@@ -556,6 +556,11 @@
                         <Insets left="57.6" />
                      </VBox.margin>
                   </Label>
+                  <ImageView fx:id="imgdeck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img2deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img3deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img4deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <ImageView fx:id="img5deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </VBox>
          </right>

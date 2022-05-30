@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 
 import javafx.scene.image.Image;
 import latice.model.tiles.Tile;
+import latice.model.tiles.decks.Rack;
 
 public class TileGameTools {
 	public static String generateTilePath(Tile tile) {
