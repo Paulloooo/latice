@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import latice.model.tiles.Tile;
 import latice.model.tiles.decks.Deck;
@@ -62,12 +63,16 @@ public class LaticeController {
 	@FXML
 	private ImageView case44gb;
 	
+	@FXML
+	private GridPane gameboard;
+	
 	
 	public void initialize() throws FileNotFoundException {
 		deckj1.buildDeck(StdDeck.tiles);
 		deckj2.buildDeck(StdDeck.tiles);
 		rackj1.buildRack(deckj1.getDeck());
 		rackj2.buildRack(deckj2.getDeck());
+		
 	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
 	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
 	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
@@ -79,7 +84,17 @@ public class LaticeController {
 	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
 	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
 	    DndImageController.manageSourceDragAndDrop(imgdeck1);
-	    DndImageController.manageSourceTargetAndDrop(case44gb);
+	    DndImageController.manageSourceDragAndDrop(img2deck1);
+	    DndImageController.manageSourceDragAndDrop(img3deck1);
+	    DndImageController.manageSourceDragAndDrop(img4deck1);
+	    DndImageController.manageSourceDragAndDrop(img5deck1);
+	    DndImageController.manageSourceDragAndDrop(imgdeck2);
+	    DndImageController.manageSourceDragAndDrop(img2deck2);
+	    DndImageController.manageSourceDragAndDrop(img3deck2);
+	    DndImageController.manageSourceDragAndDrop(img4deck2);
+	    DndImageController.manageSourceDragAndDrop(img5deck2);
+
+	    DndImageController.manageSourceTargetAndDrop(gameboard);
 
 
 	}

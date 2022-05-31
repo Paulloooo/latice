@@ -1,12 +1,17 @@
 package fr.unilim.iut.latice_.controller;
 
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
+import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.PickResult;
 import javafx.scene.input.TransferMode;
+import javafx.scene.layout.GridPane;
 
 public class DndImageController {
 	public static void manageSourceDragAndDrop(ImageView source) {
@@ -26,7 +31,7 @@ public class DndImageController {
 		    }
 		});   
 	}
-	public static void manageSourceTargetAndDrop(ImageView target) {
+	public static void manageSourceTargetAndDrop(GridPane target) {
 		target.setOnDragOver(new EventHandler<DragEvent>() {
 		    public void handle(DragEvent event) {
 		        /* data is dragged over the target */
@@ -47,10 +52,25 @@ public class DndImageController {
 		        ImageView source = (ImageView) event.getGestureSource();
 
 		        Dragboard db = event.getDragboard();
+		        Node node = event.getPickResult().getIntersectedNode();
 		        boolean success = false;
-		         if (event.getGestureSource() != target) {
-		             target.setImage(source.getImage());
-		         }
+		        
+		        Integer cIndex = GridPane.getColumnIndex(node);
+		        Integer rIndex = GridPane.getRowIndex(node);
+		        int x = cIndex == null ? 0 : cIndex;
+		        int y = rIndex == null ? 0 : rIndex;
+		        
+		        if (db.hasImage()) {
+		        	ImageView image = new ImageView(db.getImage());
+		        	image.setFitHeight(40);
+		        	image.setFitWidth(40);
+		        	
+		        	target.add(image, x, y);
+		        	target.setValignment(image, VPos.CENTER);
+		        	target.setHalignment(image, HPos.CENTER);	
+		        	
+		        	success = true;
+		        }
 		        /* let the source know whether the string was successfully 
 		         * transferred and used */
 		        event.setDropCompleted(success);

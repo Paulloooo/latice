@@ -16,7 +16,7 @@
    <children>
       <BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-image: url('C:/Users/Paul/Documents/BUT_info_1ere_année/saebut1/latice_/src/main/java/fr/unilim/iut/latice_/images/bg_all.jpg'); -fx-background-color: pink;">
          <center>
-            <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="394.0" prefWidth="403.0" BorderPane.alignment="CENTER">
+            <GridPane fx:id="gameboard" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="394.0" prefWidth="403.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
