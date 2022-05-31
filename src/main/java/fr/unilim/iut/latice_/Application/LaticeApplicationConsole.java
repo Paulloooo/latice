@@ -33,37 +33,26 @@ public class LaticeApplicationConsole {
 		rackj2.buildRack(deckj2.getDeck());
 		plateau.showGameboard(plateau);
 		Tour tour = new Tour();
-		Player j1 = new Player("j1", rackj1);
-		Player j2 = new Player("j2", rackj2);
+		Player j1 = new Player("j1", rackj1, 0);
+		Player j2 = new Player("j2", rackj2, 0);
+		Integer compteurTour = 0;
 		
 	    int firstPick = (int)Math.floor(Math.random()*2);
-		if (firstPick==1){
-			System.out.print("J1 ");
-			tour.choixTuile(rackj1, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj2, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj1, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj2, plateau);
-			tour.choixTuile(rackj1, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj2, plateau);
-			plateau.showGameboard(plateau);
-		}else {
-			System.out.print("J2 ");
-			tour.choixTuile(rackj2, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj1, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj2, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj2, plateau);
-			plateau.showGameboard(plateau);
-			tour.choixTuile(rackj1, plateau);
-			plateau.showGameboard(plateau);
+		while(compteurTour<10&&(deckj1.isEmpty()==false&&deckj2.isEmpty()==false)) {
+			if (firstPick==1){
+				System.out.print("J1 ");
+				tour.choixTour(deckj1, rackj1, plateau, compteurTour, j1);
+				compteurTour++;
+				System.out.print("J2 ");
+				tour.choixTour(deckj2,rackj2, plateau,compteurTour, j2);
+			}else {
+				System.out.print("J2 ");
+				tour.choixTour(deckj2,rackj2, plateau,compteurTour,j2);
+				compteurTour++;
+				System.out.print("J1 ");
+				tour.choixTour(deckj1, rackj1, plateau, compteurTour,j1);
+			}
 		}
-		plateau.showGameboard(plateau);
 	}
 
 }

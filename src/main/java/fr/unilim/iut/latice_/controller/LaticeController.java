@@ -59,10 +59,6 @@ public class LaticeController {
 	@FXML
 	private ImageView img5deck2;
 	
-	
-	@FXML
-	private ImageView case44gb;
-	
 	@FXML
 	private GridPane gameboard;
 	
@@ -97,5 +93,26 @@ public class LaticeController {
 	    DndImageController.manageSourceTargetAndDrop(gameboard);
 
 
+	}
+	
+	public void changerackj1() throws FileNotFoundException {
+		rackj1.clear();
+		rackj1.buildRack(deckj1.getDeck());
+		System.out.println(rackj1.getRack().get(0));
+	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
+	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
+	    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
+	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+	}
+	
+	public void changerackj2() throws FileNotFoundException {
+		rackj2.clear();
+		rackj2.buildRack(deckj2.getDeck());
+	    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
+	    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
+	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
+	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
+	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
 	}
 }

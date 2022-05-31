@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -534,6 +535,7 @@
                   <ImageView fx:id="img3deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="img4deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="img5deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onAction="#changerackj1" text="Change" />
                </children>
             </VBox>
          </left>
@@ -561,6 +563,7 @@
                   <ImageView fx:id="img3deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="img4deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
                   <ImageView fx:id="img5deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button mnemonicParsing="false" onAction="#changerackj2" text="Change" />
                </children>
             </VBox>
          </right>

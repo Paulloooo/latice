@@ -9,7 +9,7 @@ import latice.model.tiles.Shape;
 import latice.model.tiles.Tile;
 
 public class Arbitre {
-	public List<Tile> addTilesNextTo (ArrayList<Tile> tilesPlacees,Tile tile){
+	public ArrayList<Tile> addTilesNextTo (ArrayList<Tile> tilesPlacees,Tile tile){
 		ArrayList<Tile> listTiles = new ArrayList();
 		Integer pos1Tile = tile.position.getX();
 		Integer pos2Tile = tile.position.getY();
@@ -21,15 +21,37 @@ public class Arbitre {
 		}
 		return listTiles;
 	}
-	public boolean verifCase(ArrayList<Tile> tilesPlacees,Tile tile) {
-		for (int i=0;i<tilesPlacees.size();i++) {
-			Tile tileAVerif = tilesPlacees.get(i);
+	public boolean verifCase(ArrayList<Tile> tilesNextTo,Tile tile) {
+		if(tilesNextTo.isEmpty()){
+			return false;
+		}else {
+		for (int i=0;i<tilesNextTo.size();i++) {
+			Tile tileAVerif = tilesNextTo.get(i);
 			Color CouleurTileAVerif = tileAVerif.color();
 			Shape FormeTileAVerif = tileAVerif.shape();
 			if((CouleurTileAVerif!=tile.color()&&FormeTileAVerif!=tile.shape())){
 				return false;
 			}
 		}
+		}
 		return true;
+	}
+	
+	public void addPoints(Player player,ArrayList<Tile> tilesNextTo) {
+		if(tilesNextTo.size()==1) {
+			player.points+=1;
+		}
+		if(tilesNextTo.size()==2) {
+			player.points+=1;
+			System.out.print("2");
+		}
+		else if(tilesNextTo.size()==3) {
+			player.points+=2;
+			System.out.print("3");
+		}
+		else if(tilesNextTo.size()==4) {
+			player.points+=4;
+			System.out.print("4");
+		}
 	}
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Scanner;
 
 import latice.model.Gameboard;
+import latice.model.tiles.Position;
 import latice.model.tiles.Tile;
+import latice.model.tiles.decks.Deck;
 import latice.model.tiles.decks.Rack;
 import latice.model.tiles.decks.Stack;
 
@@ -13,40 +15,93 @@ public class Tour {
 	Scanner keyboard = new Scanner(System.in);
 	Arbitre arbitre = new Arbitre();
 	ArrayList<Tile> tilesPlayed = new ArrayList();
-	
+	ArrayList<Tile> tilesNextTo = new ArrayList();
+
+	public void choixTour(Deck deck, Rack rack, Gameboard plateau,Integer compteurTour,Player player) {
+		message("Que voulez vous faire : - 1 : Jouer une tuile  - 2 : Acheter action supp  - 3 : Echanger tout le rack et passer son tour  - 4 : passer son tour");
+		String choix = keyboard.nextLine();
+		switch(choix){
+		   
+	       case "1": 
+	    	   confTileChoisie(rack, plateau, compteurTour,player);
+	           break;
+	   
+	       case "2":
+	           System.out.println("Hello");
+	           break;
+	   
+	       case "3":
+	    		rack.clear();
+	    		rack.buildRack(deck.getDeck());	           
+	    		break;
+	       case "4":
+	    	   break;
+		default:
+	           System.out.println("Choix incorrect");
+	           break;
+	   }
+	}
 	public static void message(String text) {
 		System.out.println(text);
 	}
 	
-	public void choixTuile(Rack deck, Gameboard gameboard) {
-		message(deck.getRack().toString());
+	public Tile choixTuile(Rack rack, Gameboard gameboard, Integer tour) {
+		message(rack.getRack().toString());
 		message("Quelle est la tuile que vous voulez poser ?");
-		Tile tile = deck.searchStringTileIntoDeck(keyboard.nextLine());
-		while (tile==null) {
-			message("La tuile n'est pas dans le deck");
-			choixTuile(deck,gameboard);
-        }
-        choixPosition(tile,gameboard);
-        
+		Tile tile = rack.searchStringTileIntoDeck(keyboard.nextLine());
+		return tile;
     }
 	
-	public Gameboard choixPosition(Tile tile, Gameboard gameboard) {
+	public Gameboard firstTour(Tile tile, Gameboard gameboard) {
+		Integer pos1=4;
+		Integer pos2=4;  
+		tile.position.setX(4);
+		tile.position.setY(4);
+		addTilesPlayed(tilesPlayed, tile);
+		gameboard.setTileAtPosition(tile, pos1, pos2);
+        gameboard.showGameboard(gameboard);
+		return gameboard;
+		
+	}
+	public void choixPosition(Tile tile, Gameboard gameboard) {
 		message("A quelle position x voulez-vous placer la tuile ?");
 		String x = keyboard.nextLine();
 		Integer pos1=Integer.valueOf(x);  
 		message("A quelle position y voulez-vous placer la tuile ?");
 		String y = keyboard.nextLine();
 		Integer pos2=Integer.valueOf(y);
-		addTilesPlayed(tilesPlayed, tile);
 		tile.position.setX(pos1);
-		tile.position.setY(pos2);	
-		arbitre.addTilesNextTo(tilesPlayed, tile);
-		if (arbitre.verifCase(tilesPlayed, tile)) {
-			gameboard.setTileAtPosition(tile, pos1, pos2);
-		}else {
+		tile.position.setY(pos2);
+	}
+	
+	public Gameboard confTilePosee(Tile tile, Gameboard gameboard,Player player) {
+		choixPosition(tile,gameboard);
+		tilesNextTo=arbitre.addTilesNextTo(tilesPlayed,tile);
+		if(!arbitre.verifCase(tilesNextTo, tile)) {
 			System.out.println("Vous ne pouvez pas jouer ici, veuillez recommencer");
-		};
+			choixPosition(tile,gameboard);
+		}
+		arbitre.addPoints(player, tilesNextTo);
+		addTilesPlayed(tilesPlayed, tile);
+		gameboard.setTileAtPosition(tile, tile.position.getX(), tile.position.getY());
+		gameboard.showGameboard(gameboard);
 		return gameboard;
+	}
+	
+	
+	public void confTileChoisie(Rack rack,Gameboard gameboard, Integer tour, Player player) {
+		Tile tileChoisie = choixTuile(rack, gameboard, tour);
+		while(tileChoisie==null) {
+			message("La tuile n'est pas dans le deck");
+			tileChoisie = choixTuile(rack,gameboard,tour);
+        }
+		if (tour==0) {
+	        firstTour(tileChoisie,gameboard);
+     		rack.removeStringTileOfRack(tileChoisie);
+		}else {
+			confTilePosee(tileChoisie,gameboard, player);
+			rack.removeStringTileOfRack(tileChoisie);
+		}
 	}
 	
 	public void addTilesPlayed(List<Tile> tilesPlayed,Tile tilePlayed) {

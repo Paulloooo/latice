@@ -2,9 +2,11 @@ package latice.model.tiles.decks;
 
 import java.util.ArrayList;
 
+import latice.model.tiles.Tile;
+
 public class Rack extends Deck{
 	ArrayList rack = new ArrayList();
-	Integer test = 0;
+	
 	public Rack() {
 		super();
 	}
@@ -22,6 +24,28 @@ public class Rack extends Deck{
 
 	public ArrayList getRack() {
 		return rack;
-	}	
+	}
+	
+	public void removeStringTileOfRack(Tile tile) {
+		for (int i=0;i<rack.size();i++) {
+			if (rack.get(i).toString().equals(tile.toString())) {
+				rack.remove(i);
+			}
+		}
+	}
+
+	public void clear() {
+		rack.clear();
+	}
+	
+	public Tile searchStringTileIntoDeck(String tile) {
+		Tile tileSearched = null;
+		for (int i=0;i<rack.size();i++) {
+			if (rack.get(i).toString().equals(tile)) {
+				tileSearched = (Tile) rack.get(i);
+			}
+		}
+		return tileSearched;
+	}
 
 }

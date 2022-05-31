@@ -10,7 +10,7 @@ public class Player {
 	Stack rack;
 	Integer points = 0;
 	
-	public Player(String pseudo, Stack rack) {
+	public Player(String pseudo, Stack rack, Integer points) {
 		this.pseudo = pseudo;
 		this.rack = rack;
 		this.points = points;
