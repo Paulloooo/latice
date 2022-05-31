@@ -59,6 +59,10 @@ public class LaticeController {
 	private ImageView img5deck2;
 	
 	
+	@FXML
+	private ImageView case44gb;
+	
+	
 	public void initialize() throws FileNotFoundException {
 		deckj1.buildDeck(StdDeck.tiles);
 		deckj2.buildDeck(StdDeck.tiles);
@@ -73,7 +77,10 @@ public class LaticeController {
 	    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
 	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
 	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
-	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));		
+	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
+	    DndImageController.manageSourceDragAndDrop(imgdeck1);
+	    DndImageController.manageSourceTargetAndDrop(case44gb);
+
 
 	}
 }

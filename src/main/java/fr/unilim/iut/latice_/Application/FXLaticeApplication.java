@@ -13,9 +13,11 @@ import javafx.fxml.FXMLLoader;
 
 public class FXLaticeApplication extends Application{
 
+	public static Stage menuStage;
+
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		Parent content = FXMLLoader.load(getClass().getResource("LaticeApplicationFX.fxml"));
+		Parent content = FXMLLoader.load(getClass().getResource("MenuLaticeFX.fxml"));
 		Scene scene = new Scene(content);
 
 		primaryStage.setScene(scene);
@@ -23,6 +25,8 @@ public class FXLaticeApplication extends Application{
 		primaryStage.setTitle("Latice");
 	    
 		primaryStage.show();
+		
+		menuStage = primaryStage;
 	}
 	
     public static void main(String[] args) {

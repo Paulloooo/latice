@@ -41,7 +41,7 @@
               </rowConstraints>
                <children>
                   <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                  <ImageView fx:id="case44gb" fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
                      <image>
                         <Image url="@../images/bg_moon.png" />
                      </image></ImageView>
