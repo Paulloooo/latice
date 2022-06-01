@@ -14,6 +14,8 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 
 public class DndImageController {
+	static String tile; 
+    static LaticeController laticeController = new LaticeController();
 	public static void manageSourceDragAndDrop(ImageView source) {
 		source.setOnDragDetected(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent event) {
@@ -26,6 +28,7 @@ public class DndImageController {
 		        ClipboardContent content = new ClipboardContent();
 		        content.putImage(source.getImage());
 		        db.setContent(content);
+		        tile = source.getId();
 		        event.consume();
 		    }
 		}); 
@@ -64,12 +67,13 @@ public class DndImageController {
 		        	ImageView image = new ImageView(db.getImage());
 		        	image.setFitHeight(40);
 		        	image.setFitWidth(40);
-		        	
-		        	target.add(image, x, y);
-		        	target.setValignment(image, VPos.CENTER);
-		        	target.setHalignment(image, HPos.CENTER);	
-		        	source.setVisible(false);
-		        	success = true;
+					if(laticeController.actionPoser(tile,y,x)) {
+			        	target.add(image, x, y);
+			        	target.setValignment(image, VPos.CENTER);
+			        	target.setHalignment(image, HPos.CENTER);
+			        	source.setVisible(false);
+			        	success = true;
+					};
 		        }
 
 		        event.setDropCompleted(success);

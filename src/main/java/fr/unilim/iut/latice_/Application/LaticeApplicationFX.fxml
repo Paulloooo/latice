@@ -504,13 +504,6 @@
                </children>
             </GridPane>
          </center>
-         <top>
-            <Label text="LATICE  " BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Candara" size="50.0" />
-               </font>
-            </Label>
-         </top>
          <left>
             <VBox fx:id="idDeck" prefHeight="530.0" prefWidth="142.0" BorderPane.alignment="CENTER">
                <children>
@@ -617,6 +610,30 @@
                </BorderPane.margin>
             </Button>
          </bottom>
+         <top>
+            <VBox prefHeight="82.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="TOP_CENTER" prefHeight="47.0" prefWidth="100.0" text="Latice">
+                     <VBox.margin>
+                        <Insets left="450.0" />
+                     </VBox.margin>
+                     <font>
+                        <Font name="Comic Sans MS Bold Italic" size="33.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="joueurPlay">
+                     <VBox.margin>
+                        <Insets left="470.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label prefHeight="18.0" prefWidth="0.0">
+                     <VBox.margin>
+                        <Insets left="450.0" />
+                     </VBox.margin>
+                  </Label>
+               </children>
+            </VBox>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>

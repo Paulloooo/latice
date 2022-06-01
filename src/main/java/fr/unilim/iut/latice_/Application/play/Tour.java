@@ -52,7 +52,7 @@ public class Tour {
 		return tile;
     }
 	
-	public Gameboard firstTour(Tile tile, Gameboard gameboard) {
+	public Gameboard firstTour(Tile tile, Gameboard gameboard, ArrayList tilesPlayed) {
 		Integer pos1=4;
 		Integer pos2=4;  
 		tile.position.setX(4);
@@ -74,7 +74,21 @@ public class Tour {
 		tile.position.setY(pos2);
 	}
 	
-	public Gameboard confTilePosee(Tile tile, Gameboard gameboard,Player player) {
+	public Gameboard confTilePosee(Tile tile, Gameboard gameboard,Player player, ArrayList tilesPlayed) {
+		tilesNextTo=arbitre.addTilesNextTo(tilesPlayed,tile);
+
+		if(!arbitre.verifCase(tilesNextTo, tile)) {
+			return null;
+		}
+		arbitre.addPoints(player, tilesNextTo);
+		addTilesPlayed(tilesPlayed, tile);
+		System.out.println(tilesPlayed);
+		gameboard.setTileAtPosition(tile, tile.position.getX(), tile.position.getY());
+		gameboard.showGameboard(gameboard);
+		return gameboard;
+	}
+	
+	public Gameboard confTilePoseeConsole(Tile tile, Gameboard gameboard,Player player) {
 		choixPosition(tile,gameboard);
 		tilesNextTo=arbitre.addTilesNextTo(tilesPlayed,tile);
 		if(!arbitre.verifCase(tilesNextTo, tile)) {
@@ -88,7 +102,6 @@ public class Tour {
 		return gameboard;
 	}
 	
-	
 	public void confTileChoisie(Rack rack,Gameboard gameboard, Integer tour, Player player) {
 		Tile tileChoisie = choixTuile(rack, gameboard, tour);
 		while(tileChoisie==null) {
@@ -96,10 +109,10 @@ public class Tour {
 			tileChoisie = choixTuile(rack,gameboard,tour);
         }
 		if (tour==0) {
-	        firstTour(tileChoisie,gameboard);
+	        firstTour(tileChoisie,gameboard, tilesPlayed);
      		rack.removeStringTileOfRack(tileChoisie);
 		}else {
-			confTilePosee(tileChoisie,gameboard, player);
+			confTilePoseeConsole(tileChoisie,gameboard, player);
 			rack.removeStringTileOfRack(tileChoisie);
 		}
 	}
