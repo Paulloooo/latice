@@ -5,7 +5,9 @@ import java.util.ArrayList;
 
 import fr.unilim.iut.latice.view.TileGameView;
 import fr.unilim.iut.latice_.Application.play.Player;
+import fr.unilim.iut.latice_.Application.play.Tour;
 import fr.unilim.iut.latice_.tools.TileGameTools;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -26,9 +28,20 @@ public class LaticeController {
 	Stack StdDeck = new StandardDeck();
 	Deck deckj1 = new Deck();
 	Deck deckj2 = new Deck();
-	Rack rackj1 = new Rack();
-	Rack rackj2 = new Rack();
+	static Rack rackj1 = new Rack();
+	static Rack rackj2 = new Rack();
+	static Player actualPlayer;
+	Integer compteurTour = 0;
+	static Player j1 = new Player("j1", rackj1, 0);
+	static Player j2 = new Player("j2", rackj2, 0);
 	
+
+    @FXML
+    private VBox idDeck;
+
+    @FXML
+    private VBox idDeck2;
+
 	@FXML
 	private ImageView imgdeck1;
 	
@@ -91,8 +104,15 @@ public class LaticeController {
 	    DndImageController.manageSourceDragAndDrop(img5deck2);
 
 	    DndImageController.manageSourceTargetAndDrop(gameboard);
-
-
+	    
+	    int firstPick = (int)Math.floor(Math.random()*2);
+	    if (firstPick==1){
+			actualPlayer = j1;
+			idDeck2.setVisible(false);
+		}else {
+			actualPlayer = j2;
+			idDeck.setVisible(false);
+		}
 	}
 	
 	public void changerackj1() throws FileNotFoundException {
@@ -114,5 +134,33 @@ public class LaticeController {
 	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
 	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
 	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
+	    DndImageController.manageSourceDragAndDrop(imgdeck1);
+	    DndImageController.manageSourceDragAndDrop(img2deck1);
+	    DndImageController.manageSourceDragAndDrop(img3deck1);
+	    DndImageController.manageSourceDragAndDrop(img4deck1);
+	    DndImageController.manageSourceDragAndDrop(img5deck1);
+	    DndImageController.manageSourceDragAndDrop(imgdeck2);
+	    DndImageController.manageSourceDragAndDrop(img2deck2);
+	    DndImageController.manageSourceDragAndDrop(img3deck2);
+	    DndImageController.manageSourceDragAndDrop(img4deck2);
+	    DndImageController.manageSourceDragAndDrop(img5deck2);
+
+	    DndImageController.manageSourceTargetAndDrop(gameboard);
+	   
+	    
 	}
+	
+
+    @FXML
+    void finTour(ActionEvent event) {
+		if (actualPlayer.equals(j1)) {
+			idDeck.setVisible(false);
+			actualPlayer=j2;
+			idDeck2.setVisible(true);
+		}else {
+			idDeck2.setVisible(false);
+			actualPlayer=j1;
+			idDeck.setVisible(true);
+		}
+    }
 }

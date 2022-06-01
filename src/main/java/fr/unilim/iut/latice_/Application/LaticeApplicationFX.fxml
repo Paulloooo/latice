@@ -42,7 +42,7 @@
               </rowConstraints>
                <children>
                   <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="case44gb" fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                  <ImageView fitHeight="45.0" fitWidth="67.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
                      <image>
                         <Image url="@../images/bg_moon.png" />
                      </image></ImageView>
@@ -512,9 +512,9 @@
             </Label>
          </top>
          <left>
-            <VBox prefHeight="530.0" prefWidth="142.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="idDeck" prefHeight="530.0" prefWidth="142.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Score :">
+                  <Label text="Score J1 :">
                      <font>
                         <Font name="Consolas" size="20.0" />
                      </font>
@@ -522,7 +522,7 @@
                         <Insets left="20.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="0" textAlignment="CENTER">
+                  <Label fx:id="scorej1" text="0" textAlignment="CENTER">
                      <font>
                         <Font name="Consolas" size="16.0" />
                      </font>
@@ -530,27 +530,46 @@
                         <Insets left="20.0" />
                      </VBox.margin>
                   </Label>
-                  <ImageView fx:id="imgdeck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img2deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img3deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img4deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img5deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onAction="#changerackj1" text="Change" />
+                  <ImageView fx:id="imgdeck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></ImageView>
+                  <ImageView fx:id="img2deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></ImageView>
+                  <ImageView fx:id="img3deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></ImageView>
+                  <ImageView fx:id="img4deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></ImageView>
+                  <ImageView fx:id="img5deck1" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="10.0" />
+                     </VBox.margin></ImageView>
+                  <Button mnemonicParsing="false" onAction="#changerackj1" text="Change">
+                     <VBox.margin>
+                        <Insets left="10.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </left>
          <right>
-            <VBox fx:id="idDeck" prefHeight="518.0" prefWidth="161.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="idDeck2" prefHeight="518.0" prefWidth="161.0" BorderPane.alignment="CENTER">
                <children>
-                  <Label text="Score :">
+                  <Label text="Score J2 :">
                      <font>
                         <Font name="Consolas" size="20.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="57.6" />
+                        <Insets left="40.0" />
                      </VBox.margin>
                   </Label>
-                  <Label text="0">
+                  <Label fx:id="scorej2" text="0" textAlignment="RIGHT">
                      <font>
                         <Font name="Consolas" size="16.0" />
                      </font>
@@ -558,15 +577,46 @@
                         <Insets left="57.6" />
                      </VBox.margin>
                   </Label>
-                  <ImageView fx:id="imgdeck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img2deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img3deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img4deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="img5deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button mnemonicParsing="false" onAction="#changerackj2" text="Change" />
+                  <ImageView fx:id="imgdeck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="80.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="img2deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="80.0" right="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="img3deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="80.0" right="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="img4deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="80.0" right="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="img5deck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets left="80.0" right="10.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Button mnemonicParsing="false" onAction="#changerackj2" text="Change">
+                     <VBox.margin>
+                        <Insets left="80.0" top="30.0" />
+                     </VBox.margin>
+                  </Button>
                </children>
             </VBox>
          </right>
+         <bottom>
+            <Button fx:id="valider" mnemonicParsing="false" onAction="#finTour" text="Valider" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="20.0" />
+               </BorderPane.margin>
+            </Button>
+         </bottom>
       </BorderPane>
    </children>
 </AnchorPane>

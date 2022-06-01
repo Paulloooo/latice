@@ -21,13 +21,15 @@ public class MenuController {
 
     @FXML
     void launchLaticeGame(ActionEvent event) throws Exception {
-    	FXMenuApplication jeu = new FXMenuApplication();
-    	jeu.start(FXMenuApplication.jeuStage);
+    	FXLaticeApplication jeu = new FXLaticeApplication();
+    	jeu.start(FXLaticeApplication.jeuStage);
     }
     
     @FXML
     void quitLaticeGame(ActionEvent event) throws Exception {
     	FXLaticeApplication jeu = new FXLaticeApplication();
-    	FXLaticeApplication.menuStage.close();;
+    	FXLaticeApplication.jeuStage.close();
+    	FXMenuApplication menu = new FXMenuApplication();
+    	FXMenuApplication.menuStage.close();
     }
 }

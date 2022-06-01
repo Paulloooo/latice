@@ -26,11 +26,11 @@ public class DndImageController {
 		        ClipboardContent content = new ClipboardContent();
 		        content.putImage(source.getImage());
 		        db.setContent(content);
-		        
 		        event.consume();
 		    }
-		});   
+		}); 
 	}
+
 	public static void manageSourceTargetAndDrop(GridPane target) {
 		target.setOnDragOver(new EventHandler<DragEvent>() {
 		    public void handle(DragEvent event) {
@@ -68,11 +68,10 @@ public class DndImageController {
 		        	target.add(image, x, y);
 		        	target.setValignment(image, VPos.CENTER);
 		        	target.setHalignment(image, HPos.CENTER);	
-		        	
+		        	source.setVisible(false);
 		        	success = true;
 		        }
-		        /* let the source know whether the string was successfully 
-		         * transferred and used */
+
 		        event.setDropCompleted(success);
 		        
 		        event.consume();
@@ -80,6 +79,4 @@ public class DndImageController {
 		});
 		
 	}
-
-
 }
