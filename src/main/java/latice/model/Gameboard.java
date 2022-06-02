@@ -76,5 +76,9 @@ public class Gameboard {
 		return (test[i][j]=="  " || test[i][j]=="M " || test[i][j]=="S " );
 	}
 	
+	public boolean isSunCase(int i, int j) {
+		return (test[i][j]=="S " );
+	}
+	
 
 }

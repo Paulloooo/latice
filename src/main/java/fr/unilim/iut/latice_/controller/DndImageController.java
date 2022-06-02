@@ -35,6 +35,7 @@ public class DndImageController {
 	}
 
 	public static void manageSourceTargetAndDrop(GridPane target) {
+    	target.setDisable(false);
 		target.setOnDragOver(new EventHandler<DragEvent>() {
 		    public void handle(DragEvent event) {
 		        /* data is dragged over the target */
@@ -67,7 +68,16 @@ public class DndImageController {
 		        	ImageView image = new ImageView(db.getImage());
 		        	image.setFitHeight(40);
 		        	image.setFitWidth(40);
-					if(laticeController.actionPoser(tile,y,x)) {
+		        	if(laticeController.getCompteurTour()==0) {
+		        		laticeController.actionPoser(tile,4,4);
+		        		target.add(image, 4, 4);
+			        	target.setValignment(image, VPos.CENTER);
+			        	target.setHalignment(image, HPos.CENTER);
+			        	source.setVisible(false);
+			        	target.setDisable(true);
+			        	success = true;
+		        	}
+		        	else if(laticeController.actionPoser(tile,y,x)) {
 			        	target.add(image, x, y);
 			        	target.setValignment(image, VPos.CENTER);
 			        	target.setHalignment(image, HPos.CENTER);

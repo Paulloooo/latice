@@ -42,15 +42,20 @@ public class LaticeApplicationConsole {
 			if (firstPick==1){
 				System.out.print("J1 ");
 				tour.choixTour(deckj1, rackj1, plateau, compteurTour, j1);
+				System.out.println(j1.getPoints()+" points");
 				compteurTour++;
 				System.out.print("J2 ");
 				tour.choixTour(deckj2,rackj2, plateau,compteurTour, j2);
+				System.out.println(j2.getPoints()+" points");
 			}else {
 				System.out.print("J2 ");
 				tour.choixTour(deckj2,rackj2, plateau,compteurTour,j2);
+				System.out.println(j2.getPoints()+" points");
 				compteurTour++;
 				System.out.print("J1 ");
 				tour.choixTour(deckj1, rackj1, plateau, compteurTour,j1);
+				System.out.println(j1.getPoints()+" points");
+
 			}
 		}
 	}

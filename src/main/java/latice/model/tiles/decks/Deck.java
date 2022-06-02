@@ -3,6 +3,8 @@ package latice.model.tiles.decks;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import latice.model.tiles.Tile;
+
 public class Deck extends StandardDeck{
 	ArrayList deck = new ArrayList();
 	Integer test = 0;
@@ -28,4 +30,15 @@ public class Deck extends StandardDeck{
 	public ArrayList getDeck() {
 		return deck;
 	}	
+	
+	public Tile draw() {
+		Tile drawnCard;
+		if(deck.isEmpty()) {
+			drawnCard=null;
+		}else {
+			drawnCard = (Tile) deck.get(0);
+			deck.remove(0);
+		}
+		return(drawnCard);
+	}
 }

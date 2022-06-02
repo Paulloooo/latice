@@ -37,10 +37,8 @@ public class Arbitre {
 		return true;
 	}
 	
-	public void addPoints(Player player,ArrayList<Tile> tilesNextTo) {
-		if(tilesNextTo.size()==1) {
-			player.points+=1;
-		}
+	public void addPoints(Gameboard gameboard,Player player,ArrayList<Tile> tilesNextTo,Tile tile) {
+
 		if(tilesNextTo.size()==2) {
 			player.points+=1;
 			System.out.print("2");
@@ -52,6 +50,9 @@ public class Arbitre {
 		else if(tilesNextTo.size()==4) {
 			player.points+=4;
 			System.out.print("4");
+		}
+		else if(gameboard.isSunCase(tile.position.getX(),tile.position.getY())) {
+			player.points+=2;
 		}
 	}
 

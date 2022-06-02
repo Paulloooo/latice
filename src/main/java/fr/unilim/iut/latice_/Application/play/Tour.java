@@ -23,18 +23,18 @@ public class Tour {
 		switch(choix){
 		   
 	       case "1": 
-	    	   confTileChoisie(rack, plateau, compteurTour,player);
-	           break;
-	   
+	    	   confTileChoisie(rack, plateau, compteurTour,player);	
+	    	   choixTour(deck,rack, plateau,compteurTour,player);
 	       case "2":
-	           System.out.println("Hello");
 	           break;
 	   
 	       case "3":
 	    		rack.clear();
 	    		rack.buildRack(deck.getDeck());	           
-	    		break;
 	       case "4":
+	    	   for(int i=0;i<5-rack.getRack().size();i++) {
+	    		   rack.getRack().add(deck.draw());
+	    	   }
 	    	   break;
 		default:
 	           System.out.println("Choix incorrect");
@@ -80,7 +80,7 @@ public class Tour {
 		if(!arbitre.verifCase(tilesNextTo, tile)) {
 			return null;
 		}
-		arbitre.addPoints(player, tilesNextTo);
+		arbitre.addPoints(gameboard, player, tilesNextTo, tile);
 		addTilesPlayed(tilesPlayed, tile);
 		System.out.println(tilesPlayed);
 		gameboard.setTileAtPosition(tile, tile.position.getX(), tile.position.getY());
@@ -95,7 +95,7 @@ public class Tour {
 			System.out.println("Vous ne pouvez pas jouer ici, veuillez recommencer");
 			choixPosition(tile,gameboard);
 		}
-		arbitre.addPoints(player, tilesNextTo);
+		arbitre.addPoints(gameboard, player, tilesNextTo, tile);
 		addTilesPlayed(tilesPlayed, tile);
 		gameboard.setTileAtPosition(tile, tile.position.getX(), tile.position.getY());
 		gameboard.showGameboard(gameboard);
@@ -110,10 +110,10 @@ public class Tour {
         }
 		if (tour==0) {
 	        firstTour(tileChoisie,gameboard, tilesPlayed);
-     		rack.removeStringTileOfRack(tileChoisie);
+     		rack.removeTileOfRack(tileChoisie);
 		}else {
 			confTilePoseeConsole(tileChoisie,gameboard, player);
-			rack.removeStringTileOfRack(tileChoisie);
+			rack.removeTileOfRack(tileChoisie);
 		}
 	}
 	

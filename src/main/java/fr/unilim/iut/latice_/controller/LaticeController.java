@@ -33,7 +33,7 @@ public class LaticeController {
 	static Rack rackj1 = new Rack();
 	static Rack rackj2 = new Rack();
 	static Player actualPlayer;
-	Integer compteurTour = 0;
+    static Integer compteurTour = 0;
 	static Player j1 = new Player("j1", rackj1, 0);
 	static Player j2 = new Player("j2", rackj2, 0);
 	Gameboard gameboardBack = new Gameboard();
@@ -82,6 +82,18 @@ public class LaticeController {
     @FXML
     private Label joueurPlay;
 	
+    @FXML
+    private Label scorej1;
+
+    @FXML
+    private Label scorej2;
+	
+	public static Integer getCompteurTour() {
+		return compteurTour;
+	}
+	public static void setCompteurTour(Integer compteurTour) {
+		LaticeController.compteurTour = compteurTour;
+	}
 	
 	public void initialize() throws FileNotFoundException {
 		deckj1.buildDeck(StdDeck.tiles);
@@ -122,7 +134,13 @@ public class LaticeController {
 			joueurPlay.setText("Le joueur 2 joue.");
 		}
 	}
-	
+	public void initTiles(Rack rack) throws FileNotFoundException {
+	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
+	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
+	    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
+	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+	}
 	public void changerackj1() throws FileNotFoundException {
 		rackj1.clear();
 		rackj1.buildRack(deckj1.getDeck());
@@ -153,7 +171,7 @@ public class LaticeController {
  
 	}
 	
-	 boolean actionPoser(String imgViewTile,Integer pos1, Integer pos2) {
+	 boolean actionPoser(String imgViewTile, Integer pos1, Integer pos2) {
 		 switch(imgViewTile){
 	       case "imgdeck1": 
 	    	   System.out.print("J2 :");
@@ -163,7 +181,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj1.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img2deck1": 
 	    	   System.out.print("J1 :");
@@ -173,7 +193,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj1.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img3deck1": 
 	    	   System.out.print("J1 :");
@@ -183,7 +205,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj1.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img4deck1": 
 	    	   System.out.print("J1 :");
@@ -193,7 +217,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj1.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img5deck1": 
 	    	   System.out.print("J1 :");
@@ -203,7 +229,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj1.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "imgdeck2": 
 	    	   System.out.print("J2 :");
@@ -212,7 +240,10 @@ public class LaticeController {
 	    	   tilePosee.position.setY(pos2);
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
-	    	   };			   compteurTour++;
+	    	   };
+	    	   rackj2.removeTileOfRack(tilePosee); 
+	    	   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img2deck2": 
 	    	   System.out.print("J2 :");
@@ -220,7 +251,9 @@ public class LaticeController {
 	    	   tilePosee.position.setX(pos1);
 	    	   tilePosee.position.setY(pos2);
 	    	   verifTiles(tilePosee, compteurTour);
+	    	   rackj2.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img3deck2": 
 	    	   System.out.print("J2 :");
@@ -230,7 +263,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj2.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img4deck2": 
 	    	   System.out.print("J2 :");
@@ -240,7 +275,9 @@ public class LaticeController {
 	    	   if (verifTiles(tilePosee, compteurTour)==false) {
 	    		   return false;
 	    	   };
+	    	   rackj2.removeTileOfRack(tilePosee);
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       case "img5deck2": 
 	    	   System.out.print("J2 :");
@@ -251,6 +288,7 @@ public class LaticeController {
 	    		   return false;
 	    	   };
 			   compteurTour++;
+			   System.out.println(compteurTour);
 	    	   break;
 	       default:
 	           System.out.println("Choix incorrect");
@@ -267,22 +305,55 @@ public class LaticeController {
 				return false;
 			};
 		}
+		System.out.println("testtt");
 		return true;
 	}
     @FXML
-    void finTour(ActionEvent event) {
+    void finTour(ActionEvent event) throws FileNotFoundException {
+		System.out.println(compteurTour);
+    	gameboard.setDisable(false);
 		if (actualPlayer.equals(j1)) {
 			idDeck.setVisible(false);
 			actualPlayer=j2;
+			scorej2.setText(actualPlayer.getPoints().toString());
+	    	for(int i=0;i<5-rackj2.getRack().size();i++) {
+	    	   this.rackj2.getRack().add(deckj2.draw());
+	    	}
+		    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));
+		    imgdeck2.setVisible(true);
+		    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
+		    img2deck2.setVisible(true);
+		    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));	
+		    img3deck2.setVisible(true);
+		    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
+		    img4deck2.setVisible(true);
+		    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
+		    img5deck2.setVisible(true);
 			idDeck2.setVisible(true);
 			joueurPlay.setText("Le joueur 2 joue.");
+			compteurTour++;
 		}else {
 			idDeck2.setVisible(false);
 			actualPlayer=j1;
+			scorej1.setText(actualPlayer.getPoints().toString());
+	    	for(int i=0;i<5-rackj1.getRack().size();i++) {
+	    	   this.rackj1.getRack().add(deckj1.draw());
+	   	   }
+		    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+		    imgdeck1.setVisible(true);
+		    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
+		    img2deck1.setVisible(true);
+		    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
+		    img3deck1.setVisible(true);
+		    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));	
+		    img4deck1.setVisible(true);
+		    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+		    img5deck1.setVisible(true);
 			idDeck.setVisible(true);
 			joueurPlay.setText("Le joueur 1 joue.");
-
+			compteurTour++;
 		}
     }
+
 
 }

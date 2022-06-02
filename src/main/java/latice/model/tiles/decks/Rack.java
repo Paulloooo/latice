@@ -26,7 +26,7 @@ public class Rack extends Deck{
 		return rack;
 	}
 	
-	public void removeStringTileOfRack(Tile tile) {
+	public void removeTileOfRack(Tile tile) {
 		for (int i=0;i<rack.size();i++) {
 			if (rack.get(i).toString().equals(tile.toString())) {
 				rack.remove(i);
@@ -38,6 +38,7 @@ public class Rack extends Deck{
 		rack.clear();
 	}
 	
+	
 	public Tile searchStringTileIntoDeck(String tile) {
 		Tile tileSearched = null;
 		for (int i=0;i<rack.size();i++) {
@@ -47,5 +48,8 @@ public class Rack extends Deck{
 		}
 		return tileSearched;
 	}
+
+	
+	
 
 }

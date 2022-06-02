@@ -15,7 +15,7 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.unilim.iut.latice_.controller.LaticeController">
    <children>
-      <BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-image: url('C:/Users/Paul/Documents/BUT_info_1ere_année/saebut1/latice_/src/main/java/fr/unilim/iut/latice_/images/bg_all.jpg'); -fx-background-color: pink;">
+      <BorderPane prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: lightblue;">
          <center>
             <GridPane fx:id="gameboard" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="394.0" prefWidth="403.0" BorderPane.alignment="CENTER">
               <columnConstraints>
@@ -509,7 +509,7 @@
                <children>
                   <Label text="Score J1 :">
                      <font>
-                        <Font name="Consolas" size="20.0" />
+                        <Font name="Tw Cen MT Bold Italic" size="26.0" />
                      </font>
                      <VBox.margin>
                         <Insets left="20.0" />
@@ -517,7 +517,7 @@
                   </Label>
                   <Label fx:id="scorej1" text="0" textAlignment="CENTER">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Trebuchet MS" size="16.0" />
                      </font>
                      <VBox.margin>
                         <Insets left="20.0" />
@@ -547,16 +547,19 @@
                      <VBox.margin>
                         <Insets left="10.0" top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="16.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
          </left>
          <right>
-            <VBox fx:id="idDeck2" prefHeight="518.0" prefWidth="161.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="idDeck2" prefHeight="518.0" prefWidth="161.0" style="-fx-background-image: url('C:\Users\Paul\Documents\BUT_info_1ere_année\saebut1\latice_\src\main\java\fr\unilim\iut\latice_\Application');" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Score J2 :">
                      <font>
-                        <Font name="Consolas" size="20.0" />
+                        <Font name="Tw Cen MT Bold Italic" size="26.0" />
                      </font>
                      <VBox.margin>
                         <Insets left="40.0" />
@@ -564,10 +567,10 @@
                   </Label>
                   <Label fx:id="scorej2" text="0" textAlignment="RIGHT">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Tw Cen MT" size="16.0" />
                      </font>
                      <VBox.margin>
-                        <Insets left="57.6" />
+                        <Insets left="40.0" />
                      </VBox.margin>
                   </Label>
                   <ImageView fx:id="imgdeck2" fitHeight="75.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
@@ -599,6 +602,9 @@
                      <VBox.margin>
                         <Insets left="80.0" top="30.0" />
                      </VBox.margin>
+                     <font>
+                        <Font name="Tw Cen MT Condensed" size="16.0" />
+                     </font>
                   </Button>
                </children>
             </VBox>
@@ -608,6 +614,9 @@
                <BorderPane.margin>
                   <Insets bottom="20.0" />
                </BorderPane.margin>
+               <font>
+                  <Font name="Tw Cen MT Condensed" size="25.0" />
+               </font>
             </Button>
          </bottom>
          <top>
@@ -618,18 +627,16 @@
                         <Insets left="450.0" />
                      </VBox.margin>
                      <font>
-                        <Font name="Comic Sans MS Bold Italic" size="33.0" />
+                        <Font name="Berlin Sans FB" size="33.0" />
                      </font>
                   </Label>
-                  <Label fx:id="joueurPlay">
+                  <Label fx:id="joueurPlay" prefHeight="18.0" prefWidth="128.0">
                      <VBox.margin>
-                        <Insets left="470.0" />
+                        <Insets left="443.0" />
                      </VBox.margin>
-                  </Label>
-                  <Label prefHeight="18.0" prefWidth="0.0">
-                     <VBox.margin>
-                        <Insets left="450.0" />
-                     </VBox.margin>
+                     <font>
+                        <Font name="Tw Cen MT" size="15.0" />
+                     </font>
                   </Label>
                </children>
             </VBox>
