@@ -1,8 +1,8 @@
-package latice.model.tiles.decks;
+package fr.unilim.iut.latice_.model.tiles.decks;
 
 import java.util.ArrayList;
 
-import latice.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.Tile;
 
 public class Rack extends Deck{
 	ArrayList rack = new ArrayList();

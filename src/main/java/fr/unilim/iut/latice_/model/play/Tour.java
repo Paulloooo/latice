@@ -1,15 +1,15 @@
-package fr.unilim.iut.latice_.Application.play;
+package fr.unilim.iut.latice_.model.play;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import latice.model.Gameboard;
-import latice.model.tiles.Position;
-import latice.model.tiles.Tile;
-import latice.model.tiles.decks.Deck;
-import latice.model.tiles.decks.Rack;
-import latice.model.tiles.decks.Stack;
+import fr.unilim.iut.latice_.model.Gameboard;
+import fr.unilim.iut.latice_.model.tiles.Position;
+import fr.unilim.iut.latice_.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.decks.Deck;
+import fr.unilim.iut.latice_.model.tiles.decks.Rack;
+import fr.unilim.iut.latice_.model.tiles.decks.Stack;
 
 public class Tour {
 	Scanner keyboard = new Scanner(System.in);

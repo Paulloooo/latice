@@ -1,4 +1,4 @@
-package latice.model.tiles;
+package fr.unilim.iut.latice_.model.tiles;
 
 public class Tile {
 	private Color color;

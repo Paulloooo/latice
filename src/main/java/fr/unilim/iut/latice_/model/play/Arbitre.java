@@ -1,12 +1,12 @@
-package fr.unilim.iut.latice_.Application.play;
+package fr.unilim.iut.latice_.model.play;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import latice.model.Gameboard;
-import latice.model.tiles.Color;
-import latice.model.tiles.Shape;
-import latice.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.Gameboard;
+import fr.unilim.iut.latice_.model.tiles.Color;
+import fr.unilim.iut.latice_.model.tiles.Shape;
+import fr.unilim.iut.latice_.model.tiles.Tile;
 
 public class Arbitre {
 	public ArrayList<Tile> addTilesNextTo (ArrayList<Tile> tilesPlacees,Tile tile){

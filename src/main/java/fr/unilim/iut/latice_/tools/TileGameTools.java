@@ -4,9 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import fr.unilim.iut.latice_.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.decks.Rack;
 import javafx.scene.image.Image;
-import latice.model.tiles.Tile;
-import latice.model.tiles.decks.Rack;
 
 public class TileGameTools {
 	public static String generateTilePath(Tile tile) {

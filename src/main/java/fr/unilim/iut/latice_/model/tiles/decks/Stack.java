@@ -1,11 +1,11 @@
-package latice.model.tiles.decks;
+package fr.unilim.iut.latice_.model.tiles.decks;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
 
-import latice.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.Tile;
 
 public class Stack {
 

@@ -1,4 +1,4 @@
-package latice.model.tiles;
+package fr.unilim.iut.latice_.model.tiles;
 
 public enum Color {
 	GREEN("G"),MAGENTA("M"),YELLOW("Y"),TURQUOISE("T"),NIGHTBLUE("N"),RED("R");

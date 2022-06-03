@@ -1,11 +1,11 @@
-package fr.unilim.iut.latice.view;
+package fr.unilim.iut.latice_.view;
 
 import java.io.FileNotFoundException;
 
+import fr.unilim.iut.latice_.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.decks.Rack;
 import fr.unilim.iut.latice_.tools.TileGameTools;
 import javafx.scene.image.Image;
-import latice.model.tiles.Tile;
-import latice.model.tiles.decks.Rack;
 
 public class TileGameView {
 	public static Image generateImageFromTile(Rack rack, Integer indice) throws FileNotFoundException {

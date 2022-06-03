@@ -1,9 +1,9 @@
-package fr.unilim.iut.latice_.Application.play;
+package fr.unilim.iut.latice_.model.play;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import latice.model.tiles.decks.Stack;
+import fr.unilim.iut.latice_.model.tiles.decks.Stack;
 
 public class Player {
 	String pseudo;

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import fr.unilim.iut.latice_.Application.play.Player;
-import fr.unilim.iut.latice_.Application.play.Tour;
-import latice.model.Gameboard;
-import latice.model.tiles.Color;
-import latice.model.tiles.Shape;
-import latice.model.tiles.Tile;
-import latice.model.tiles.decks.Deck;
-import latice.model.tiles.decks.Rack;
-import latice.model.tiles.decks.Stack;
-import latice.model.tiles.decks.StandardDeck;
+import fr.unilim.iut.latice_.model.Gameboard;
+import fr.unilim.iut.latice_.model.play.Player;
+import fr.unilim.iut.latice_.model.play.Tour;
+import fr.unilim.iut.latice_.model.tiles.Color;
+import fr.unilim.iut.latice_.model.tiles.Shape;
+import fr.unilim.iut.latice_.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.decks.Deck;
+import fr.unilim.iut.latice_.model.tiles.decks.Rack;
+import fr.unilim.iut.latice_.model.tiles.decks.Stack;
+import fr.unilim.iut.latice_.model.tiles.decks.StandardDeck;
 
 
 public class LaticeApplicationConsole {
@@ -22,16 +22,16 @@ public class LaticeApplicationConsole {
 		ArrayList<Player> listePlayers = new ArrayList<Player>();
 		ArrayList<Tile> listeTilesPlacees = new ArrayList<Tile>();
 		Gameboard plateau = new Gameboard();
-		Stack rack = new StandardDeck();
+		plateau.showGameboard(plateau);
+		Stack stdDeck = new StandardDeck();
 		Deck deckj1 = new Deck();
 		Deck deckj2 = new Deck();
 		Rack rackj1 = new Rack();
 		Rack rackj2 = new Rack();
-		deckj1.buildDeck(rack.tiles);
-		deckj2.buildDeck(rack.tiles);
+		deckj1.buildDeck(stdDeck.tiles);
+		deckj2.buildDeck(stdDeck.tiles);
 		rackj1.buildRack(deckj1.getDeck());
 		rackj2.buildRack(deckj2.getDeck());
-		plateau.showGameboard(plateau);
 		Tour tour = new Tour();
 		Player j1 = new Player("j1", rackj1, 0);
 		Player j2 = new Player("j2", rackj2, 0);

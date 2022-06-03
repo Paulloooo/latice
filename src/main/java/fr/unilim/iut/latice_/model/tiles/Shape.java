@@ -1,4 +1,4 @@
-package latice.model.tiles;
+package fr.unilim.iut.latice_.model.tiles;
 
 public enum Shape {
 	BIRD("B"),TURTLE("T"),DOLPHIN("D"),FEATHER("P"),FLOWER("F"),GECKO("G");

@@ -3,11 +3,20 @@ package fr.unilim.iut.latice_.controller;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
-import fr.unilim.iut.latice.view.TileGameView;
-import fr.unilim.iut.latice_.Application.play.Arbitre;
-import fr.unilim.iut.latice_.Application.play.Player;
-import fr.unilim.iut.latice_.Application.play.Tour;
+import fr.unilim.iut.latice_.model.Gameboard;
+import fr.unilim.iut.latice_.model.play.Arbitre;
+import fr.unilim.iut.latice_.model.play.Player;
+import fr.unilim.iut.latice_.model.play.Tour;
+import fr.unilim.iut.latice_.model.tiles.Color;
+import fr.unilim.iut.latice_.model.tiles.Position;
+import fr.unilim.iut.latice_.model.tiles.Shape;
+import fr.unilim.iut.latice_.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.decks.Deck;
+import fr.unilim.iut.latice_.model.tiles.decks.Rack;
+import fr.unilim.iut.latice_.model.tiles.decks.Stack;
+import fr.unilim.iut.latice_.model.tiles.decks.StandardDeck;
 import fr.unilim.iut.latice_.tools.TileGameTools;
+import fr.unilim.iut.latice_.view.TileGameView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -16,15 +25,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-import latice.model.tiles.Tile;
-import latice.model.tiles.decks.Deck;
-import latice.model.tiles.decks.Rack;
-import latice.model.tiles.decks.Stack;
-import latice.model.tiles.decks.StandardDeck;
-import latice.model.Gameboard;
-import latice.model.tiles.Color;
-import latice.model.tiles.Position;
-import latice.model.tiles.Shape;
 
 public class LaticeController {
 	Stack StdDeck = new StandardDeck();
@@ -315,7 +315,7 @@ public class LaticeController {
 		if (actualPlayer.equals(j1)) {
 			idDeck.setVisible(false);
 			actualPlayer=j2;
-			scorej2.setText(actualPlayer.getPoints().toString());
+			System.out.println("SCORE : "+actualPlayer.getPoints());
 	    	for(int i=0;i<5-rackj2.getRack().size();i++) {
 	    	   this.rackj2.getRack().add(deckj2.draw());
 	    	}
@@ -335,6 +335,7 @@ public class LaticeController {
 		}else {
 			idDeck2.setVisible(false);
 			actualPlayer=j1;
+			System.out.println("SCORE : "+actualPlayer.getPoints());
 			scorej1.setText(actualPlayer.getPoints().toString());
 	    	for(int i=0;i<5-rackj1.getRack().size();i++) {
 	    	   this.rackj1.getRack().add(deckj1.draw());

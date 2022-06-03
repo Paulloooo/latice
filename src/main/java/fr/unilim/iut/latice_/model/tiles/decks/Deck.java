@@ -1,13 +1,12 @@
-package latice.model.tiles.decks;
+package fr.unilim.iut.latice_.model.tiles.decks;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import latice.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.Tile;
 
 public class Deck extends StandardDeck{
 	ArrayList deck = new ArrayList();
-	Integer test = 0;
 	public Deck() {
 		super();
 	}
@@ -23,7 +22,7 @@ public class Deck extends StandardDeck{
 				standard.remove(standard.get(random_int));
 			}
 		}else {
-			this.deck.addAll(standard);
+			this.deck.addAll(standard); 
 		}
 	}
 

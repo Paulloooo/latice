@@ -20,8 +20,7 @@ public class DndImageController {
 		source.setOnDragDetected(new EventHandler<MouseEvent>() {
 		    public void handle(MouseEvent event) {
 		    	
-		        /* drag was detected, start a drag-and-drop gesture*/
-		        /* allow any transfer mode */
+
 		        Dragboard db = source.startDragAndDrop(TransferMode.ANY);
 		        
 		        /* Put a string on a dragboard */
@@ -76,8 +75,8 @@ public class DndImageController {
 			        	source.setVisible(false);
 			        	target.setDisable(true);
 			        	success = true;
-		        	}
-		        	else if(laticeController.actionPoser(tile,y,x)) {
+		        	}else{
+		        		laticeController.actionPoser(tile,y,x); 
 			        	target.add(image, x, y);
 			        	target.setValignment(image, VPos.CENTER);
 			        	target.setHalignment(image, HPos.CENTER);
