@@ -16,22 +16,40 @@ public class Turn {
 	Referee arbitre = new Referee();
 	ArrayList<Tile> tilesPlayed = new ArrayList();
 	ArrayList<Tile> tilesNextTo = new ArrayList();
+	Integer nbActionBase = 1;
 
-	public void choiceOfTurn(Deck deck, Rack rack, Gameboard plateau,Integer compteurTour,Player player) {
+	public void choiceOfTurn(Deck deck, Rack rack, Gameboard plateau,Integer compteurTour,Player player, Integer nbActions) {
 		message(rack.getRack().toString());
 		message("Que voulez vous faire : - 1 : Jouer une tuile  - 2 : Acheter action supp  - 3 : Echanger tout le rack et passer son tour  - 4 : passer son tour");
 		String choix = keyboard.nextLine();
 		switch(choix){
-		   
-	       case "1": 
-	    	   confTileChoisie(rack, plateau, compteurTour,player);	
-	    	   choiceOfTurn(deck,rack, plateau,compteurTour,player);
+	       case "1":
+	    	   if(nbActionBase>0) {
+		    	   confTileChoisie(rack, plateau, compteurTour,player);	
+		    	   nbActionBase--;
+		    	   choiceOfTurn(deck,rack, plateau,compteurTour,player, nbActions);
+	    	   }else {
+	    		   System.out.println("Vous n'avez pas assez d'actions");
+	    	   }
+	    	   break;
 	       case "2":
+	    	   if(player.points>=2) {
+	    		   nbActionBase++;
+	    		   player.points-=2;
+	    	   }
+    		   System.out.println("Nombre d'actions : "+nbActionBase);
+	    	   choiceOfTurn(deck,rack, plateau,compteurTour,player, nbActions);
 	           break;
 	   
 	       case "3":
-	    		rack.clear();
-	    		rack.buildRack(deck.getDeck());	           
+	    	   if(nbActionBase>0) {
+		    	   rack.clear();
+		    	   rack.buildRack(deck.getDeck());	    
+		    	   choiceOfTurn(deck,rack, plateau,compteurTour,player, nbActions);
+	    	   }else {
+	    		   System.out.println("Vous n'avez pas assez d'actions");
+	    	   }
+	           break;
 	       case "4":
 	    	   for(int i=0;i<5-rack.getRack().size();i++) {
 	    		   rack.getRack().add(deck.draw());
@@ -39,7 +57,7 @@ public class Turn {
 	    	   break;
 		default:
 	           System.out.println("Choix incorrect");
-	    	   choiceOfTurn(deck,rack, plateau,compteurTour,player);
+	    	   choiceOfTurn(deck,rack, plateau,compteurTour,player, nbActions);
 	           break;
 	   }
 	}
@@ -123,5 +141,7 @@ public class Turn {
 	
 	public void addTilesPlayed(List<Tile> tilesPlayed,Tile tilePlayed) {
 		tilesPlayed.add(tilePlayed);
-	}	
+	}
+
+
 }

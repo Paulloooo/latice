@@ -36,12 +36,12 @@ public class LaticeController {
 	static Rack rackj2 = new Rack();
 	static Player actualPlayer;
     static Integer compteurTour = 0;
-	static Player j1 = new Player("j1", rackj1, 0, 0);
-	static Player j2 = new Player("j2", rackj2, 0, 0);
+	static Player j1 = new Player("j1", rackj1, 0, 0, 1);
+	static Player j2 = new Player("j2", rackj2, 0, 0, 1);
 	Gameboard gameboardBack = new Gameboard();
 	ArrayList<Tile> listeTilesPlacees = new ArrayList<Tile>();
 	Referee referee = new Referee();
-	
+	Integer nbActionBase = 1;
 
     @FXML
     private VBox idDeck;
@@ -145,160 +145,192 @@ public class LaticeController {
 	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
 	}
 	public void changerackj1() throws FileNotFoundException {
-		rackj1.clear();
-		rackj1.buildRack(deckj1.getDeck());
-		System.out.println(rackj1.getRack().get(0));
-	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
-	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
-	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
-	    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
-	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+		if (j1.actions>=1) {
+			rackj1.clear();
+			rackj1.buildRack(deckj1.getDeck());
+			System.out.println(rackj1.getRack().get(0));
+		    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+		    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
+		    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
+		    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
+		    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+		    j1.actions-=1;
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Attention ");
+			alert.setContentText("Vous n'avez pas assez d'actions pour changer votre rack");
+
+			alert.showAndWait();
+		}
+
 	}
 	
 	public void changerackj2() throws FileNotFoundException {
-		rackj2.clear();
-		rackj2.buildRack(deckj2.getDeck());
-	    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
-	    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
-	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
-	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
-	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
+		if (j2.actions>=1) {
+			rackj2.clear();
+			rackj2.buildRack(deckj2.getDeck());
+		    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
+		    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
+		    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
+		    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
+		    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));
+		    j2.actions-=1;
+		}else {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Attention ");
+			alert.setContentText("Vous n'avez pas assez d'actions pour changer votre rack");
 
-	    DndImageController.manageSourceDragAndDrop(imgdeck2);
-	    DndImageController.manageSourceDragAndDrop(img2deck2);
-	    DndImageController.manageSourceDragAndDrop(img3deck2);
-	    DndImageController.manageSourceDragAndDrop(img4deck2);
-	    DndImageController.manageSourceDragAndDrop(img5deck2);
-
-	    DndImageController.manageSourceTargetAndDrop(gameboard);
+			alert.showAndWait();
+		}
  
 	}
 	
 	 boolean actionPoser(String imgViewTile, Integer pos1, Integer pos2) {
-		 switch(imgViewTile){
-	       case "imgdeck1": 
-	    	   System.out.print("J2 :");
-	    	   Tile tilePosee = (Tile) rackj1.getRack().get(0);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj1.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img2deck1": 
-	    	   System.out.print("J1 :");
-	    	   tilePosee = (Tile) rackj1.getRack().get(1);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj1.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img3deck1": 
-	    	   System.out.print("J1 :");
-	    	   tilePosee = (Tile) rackj1.getRack().get(2);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj1.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img4deck1": 
-	    	   System.out.print("J1 :");
-	    	   tilePosee = (Tile) rackj1.getRack().get(3);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj1.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img5deck1": 
-	    	   System.out.print("J1 :");
-	    	   tilePosee = (Tile) rackj1.getRack().get(4);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj1.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "imgdeck2": 
-	    	   System.out.print("J2 :");
-	    	   tilePosee = (Tile) rackj2.getRack().get(0);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj2.removeTileOfRack(tilePosee); 
-	    	   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img2deck2": 
-	    	   System.out.print("J2 :");
-	    	   tilePosee = (Tile) rackj2.getRack().get(1);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   verifTiles(tilePosee, compteurTour);
-	    	   rackj2.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img3deck2": 
-	    	   System.out.print("J2 :");
-	    	   tilePosee = (Tile) rackj2.getRack().get(2);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj2.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img4deck2": 
-	    	   System.out.print("J2 :");
-	    	   tilePosee = (Tile) rackj2.getRack().get(3);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-	    	   rackj2.removeTileOfRack(tilePosee);
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       case "img5deck2": 
-	    	   System.out.print("J2 :");
-	    	   tilePosee = (Tile) rackj2.getRack().get(4);
-	    	   tilePosee.position.setX(pos1);
-	    	   tilePosee.position.setY(pos2);
-	    	   if (verifTiles(tilePosee, compteurTour)==false) {
-	    		   return false;
-	    	   };
-			   compteurTour++;
-			   System.out.println(compteurTour);
-	    	   break;
-	       default:
-	           System.out.println("Choix incorrect");
-	           break;
-		 }
-		return true;
-	 }
+		 if(actualPlayer.actions>0) {
+			 switch(imgViewTile){
+		       case "imgdeck1": 
+		    	   System.out.print("J2 :");
+		    	   Tile tilePosee = (Tile) rackj1.getRack().get(0);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj1.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j1.actions-=1;
+		    	   break;
+		       case "img2deck1": 
+		    	   System.out.print("J1 :");
+		    	   tilePosee = (Tile) rackj1.getRack().get(1);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj1.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j1.actions-=1;
+		    	   break;
+		       case "img3deck1": 
+		    	   System.out.print("J1 :");
+		    	   tilePosee = (Tile) rackj1.getRack().get(2);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj1.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j1.actions-=1;
+		    	   break;
+		       case "img4deck1": 
+		    	   System.out.print("J1 :");
+		    	   tilePosee = (Tile) rackj1.getRack().get(3);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj1.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j1.actions-=1;
+		    	   break;
+		       case "img5deck1": 
+		    	   System.out.print("J1 :");
+		    	   tilePosee = (Tile) rackj1.getRack().get(4);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj1.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j1.actions-=1;
+		    	   break;
+		       case "imgdeck2": 
+		    	   System.out.print("J2 :");
+		    	   tilePosee = (Tile) rackj2.getRack().get(0);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj2.removeTileOfRack(tilePosee); 
+		    	   compteurTour++;
+				   System.out.println(compteurTour);
+				   j2.actions-=1;
+		    	   break;
+		       case "img2deck2": 
+		    	   System.out.print("J2 :");
+		    	   tilePosee = (Tile) rackj2.getRack().get(1);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   verifTiles(tilePosee, compteurTour);
+		    	   rackj2.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j2.actions-=1;
+		    	   break;
+		       case "img3deck2": 
+		    	   System.out.print("J2 :");
+		    	   tilePosee = (Tile) rackj2.getRack().get(2);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj2.removeTileOfRack(tilePosee);
+				   compteurTour++;
+				   System.out.println(compteurTour);
+				   j2.actions-=1;
+		    	   break;
+		       case "img4deck2": 
+		    	   System.out.print("J2 :");
+		    	   tilePosee = (Tile) rackj2.getRack().get(3);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+		    	   rackj2.removeTileOfRack(tilePosee);
+				   j2.actions-=1;
+				   compteurTour++;
+				   System.out.println(compteurTour);
+		    	   break;
+		       case "img5deck2": 
+		    	   System.out.print("J2 :");
+		    	   tilePosee = (Tile) rackj2.getRack().get(4);
+		    	   tilePosee.position.setX(pos1);
+		    	   tilePosee.position.setY(pos2);
+		    	   if (verifTiles(tilePosee, compteurTour)==false) {
+		    		   return false;
+		    	   };
+				   compteurTour++;
+				   j2.actions-=1;
+				   System.out.println(compteurTour);
+		    	   break;
+		       default:
+		           System.out.println("Choix incorrect");
+		           break;
+			 }}else {
+					Alert alert = new Alert(AlertType.INFORMATION);
+					alert.setTitle("Erreur");
+					alert.setHeaderText("Attention ");
+					alert.setContentText("Vous n'avez pas assez d'actions pour changer votre rack");
+
+					alert.showAndWait();
+					return false;
+			 }
+			return true;
+		 };
 	boolean verifTiles(Tile tile, Integer compteur) {
 		Turn tour = new Turn();
 		if(compteur==0){
@@ -318,7 +350,11 @@ public class LaticeController {
 			if (actualPlayer.equals(j1)) {
 				idDeck.setVisible(false);
 				actualPlayer=j2;
-				System.out.println("SCORE : "+actualPlayer.getPoints());
+				if(j1.actions==0) {
+					j1.actions+=1;
+				}
+				System.out.println("SCORE : "+actualPlayer.points);
+				scorej2.setText(actualPlayer.points.toString());
 		    	for(int i=0;i<5-rackj2.getRack().size();i++) {
 		    	   this.rackj2.getRack().add(deckj2.draw());
 		    	}
@@ -337,8 +373,11 @@ public class LaticeController {
 			}else {
 				idDeck2.setVisible(false);
 				actualPlayer=j1;
-				System.out.println("SCORE : "+actualPlayer.getPoints());
-				scorej1.setText(actualPlayer.getPoints().toString());
+				if(j2.actions==0) {
+					j2.actions+=1;
+				}
+				System.out.println("SCORE : "+actualPlayer.points);
+				scorej1.setText(actualPlayer.points.toString());
 		    	for(int i=0;i<5-rackj1.getRack().size();i++) {
 		    	   this.rackj1.getRack().add(deckj1.draw());
 		   	   }
