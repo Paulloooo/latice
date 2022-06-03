@@ -191,7 +191,7 @@ public class LaticeController {
 		 if(actualPlayer.actions>0) {
 			 switch(imgViewTile){
 		       case "imgdeck1": 
-		    	   System.out.print("J2 :");
+		    	   System.out.print("J1 :");
 		    	   Tile tilePosee = (Tile) rackj1.getRack().get(0);
 		    	   tilePosee.position.setX(pos1);
 		    	   tilePosee.position.setY(pos2);
@@ -404,6 +404,36 @@ public class LaticeController {
 		}
 		compteurTour++;
     }
+    
+    @FXML
+    void buyActionj1(ActionEvent event) throws FileNotFoundException{
+    	if(j1.points>=2) {
+    		j1.actions+=1;
+    		j1.points-=2;
+    	}else {			
+    		Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Attention");
+			alert.setContentText("Vous n'avez pas assez de points pour acheter una action !");
+	
+			alert.showAndWait();
+    		
+    	}
+    }
 
-
+    @FXML
+    void buyActionj2(ActionEvent event) throws FileNotFoundException{
+    	if(j2.points>=2) {
+    		j2.actions+=1;
+    		j2.points-=2;
+    	}else {			
+    		Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Erreur");
+			alert.setHeaderText("Attention");
+			alert.setContentText("Vous n'avez pas assez de points pour acheter una action !");
+	
+			alert.showAndWait();
+    		
+    	}
+    }
 }

@@ -9,6 +9,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -505,7 +506,7 @@
             </GridPane>
          </center>
          <left>
-            <VBox fx:id="idDeck" prefHeight="530.0" prefWidth="142.0" BorderPane.alignment="CENTER">
+            <VBox fx:id="idDeck" prefHeight="455.0" prefWidth="174.0" BorderPane.alignment="CENTER">
                <children>
                   <Label text="Score J1 :">
                      <font>
@@ -543,14 +544,23 @@
                      <VBox.margin>
                         <Insets left="10.0" />
                      </VBox.margin></ImageView>
-                  <Button mnemonicParsing="false" onAction="#changerackj1" text="Change">
-                     <VBox.margin>
-                        <Insets left="10.0" top="30.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Tw Cen MT Condensed" size="16.0" />
-                     </font>
-                  </Button>
+                  <HBox prefHeight="30.0" prefWidth="166.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#changerackj1" text="Change">
+                           <font>
+                              <Font name="Tw Cen MT Condensed" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="buyActionj1" mnemonicParsing="false" onAction="#buyActionj1" prefHeight="30.0" prefWidth="76.0" text="Buy Action">
+                           <font>
+                              <Font name="Tw Cen MT Condensed" size="16.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </left>
@@ -598,14 +608,26 @@
                         <Insets left="80.0" right="10.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Button mnemonicParsing="false" onAction="#changerackj2" text="Change">
-                     <VBox.margin>
-                        <Insets left="80.0" top="30.0" />
-                     </VBox.margin>
-                     <font>
-                        <Font name="Tw Cen MT Condensed" size="16.0" />
-                     </font>
-                  </Button>
+                  <HBox prefHeight="37.0" prefWidth="142.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#changerackj2" text="Change">
+                           <font>
+                              <Font name="Tw Cen MT Condensed" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="buyActionj2" mnemonicParsing="false" onAction="#buyActionj2" prefHeight="30.0" prefWidth="76.0" text="Buy Action">
+                           <font>
+                              <Font name="Tw Cen MT Condensed" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
                </children>
             </VBox>
          </right>
