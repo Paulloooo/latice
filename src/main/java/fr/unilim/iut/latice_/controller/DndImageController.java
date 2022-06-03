@@ -76,12 +76,13 @@ public class DndImageController {
 			        	target.setDisable(true);
 			        	success = true;
 		        	}else{
-		        		laticeController.actionPoser(tile,y,x); 
-			        	target.add(image, x, y);
-			        	target.setValignment(image, VPos.CENTER);
-			        	target.setHalignment(image, HPos.CENTER);
-			        	source.setVisible(false);
-			        	success = true;
+		        		if(laticeController.actionPoser(tile,y,x)) {; 
+				        	target.add(image, x, y);
+				        	target.setValignment(image, VPos.CENTER);
+				        	target.setHalignment(image, HPos.CENTER);
+				        	source.setVisible(false);
+				        	success = true;
+		        		}
 					};
 		        }
 

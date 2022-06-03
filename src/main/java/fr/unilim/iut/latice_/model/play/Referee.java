@@ -7,8 +7,10 @@ import fr.unilim.iut.latice_.model.Gameboard;
 import fr.unilim.iut.latice_.model.tiles.Color;
 import fr.unilim.iut.latice_.model.tiles.Shape;
 import fr.unilim.iut.latice_.model.tiles.Tile;
+import fr.unilim.iut.latice_.model.tiles.decks.Deck;
+import fr.unilim.iut.latice_.model.tiles.decks.Rack;
 
-public class Arbitre {
+public class Referee {
 	public ArrayList<Tile> addTilesNextTo (ArrayList<Tile> tilesPlacees,Tile tile){
 		ArrayList<Tile> listTiles = new ArrayList();
 		Integer pos1Tile = tile.position.getX();
@@ -37,24 +39,35 @@ public class Arbitre {
 		return true;
 	}
 	
+	public boolean isEndGame(int nbMaxOfTurns, Deck deckPlayer1, Deck deckPlayer2,Rack rackPlayer1, Rack rackPlayer2, Integer numberOfTurns) {
+		if(!deckPlayer1.isEmpty()&&!deckPlayer2.isEmpty()&&numberOfTurns!=nbMaxOfTurns) {
+			return true;
+		}else {
+			if (((36-(deckPlayer1.getDeck().size()+rackPlayer1.getRack().size()))>(36-(deckPlayer2.getDeck().size()+rackPlayer2.getRack().size()))&&numberOfTurns==nbMaxOfTurns)||deckPlayer1.isEmpty()) {
+				System.out.println("Le joueur 1 a gagné !");
+			}else {
+				System.out.println("Le joueur 2 a gagné !");
+			}
+			return false;
+		}
+		
+	}
+	
 	public void addPoints(Gameboard gameboard,Player player,ArrayList<Tile> tilesNextTo,Tile tile) {
 
 		if(tilesNextTo.size()==2) {
 			player.points+=1;
-			System.out.print("2");
 		}
 		else if(tilesNextTo.size()==3) {
 			player.points+=2;
-			System.out.print("3");
 		}
 		else if(tilesNextTo.size()==4) {
 			player.points+=4;
-			System.out.print("4");
 		}
 		else if(gameboard.isSunCase(tile.position.getX(),tile.position.getY())) {
 			player.points+=2;
 		}
 	}
-
+	
 
 }

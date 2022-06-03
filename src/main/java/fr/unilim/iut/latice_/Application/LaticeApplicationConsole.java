@@ -6,7 +6,8 @@ import java.util.List;
 
 import fr.unilim.iut.latice_.model.Gameboard;
 import fr.unilim.iut.latice_.model.play.Player;
-import fr.unilim.iut.latice_.model.play.Tour;
+import fr.unilim.iut.latice_.model.play.Referee;
+import fr.unilim.iut.latice_.model.play.Turn;
 import fr.unilim.iut.latice_.model.tiles.Color;
 import fr.unilim.iut.latice_.model.tiles.Shape;
 import fr.unilim.iut.latice_.model.tiles.Tile;
@@ -21,8 +22,8 @@ public class LaticeApplicationConsole {
 	public static void main(String[] args) {
 		ArrayList<Player> listePlayers = new ArrayList<Player>();
 		ArrayList<Tile> listeTilesPlacees = new ArrayList<Tile>();
-		Gameboard plateau = new Gameboard();
-		plateau.showGameboard(plateau);
+		Gameboard gameboard = new Gameboard();
+		gameboard.showGameboard(gameboard);
 		Stack stdDeck = new StandardDeck();
 		Deck deckj1 = new Deck();
 		Deck deckj2 = new Deck();
@@ -32,32 +33,43 @@ public class LaticeApplicationConsole {
 		deckj2.buildDeck(stdDeck.tiles);
 		rackj1.buildRack(deckj1.getDeck());
 		rackj2.buildRack(deckj2.getDeck());
-		Tour tour = new Tour();
-		Player j1 = new Player("j1", rackj1, 0);
-		Player j2 = new Player("j2", rackj2, 0);
+		Turn tour = new Turn();
+		Player j1 = new Player("j1", rackj1, 0, 0);
+		Player j2 = new Player("j2", rackj2, 0, 0);
 		Integer compteurTour = 0;
+		Referee referee = new Referee();
+
+
 		
 	    int firstPick = (int)Math.floor(Math.random()*2);
-		while(compteurTour<10&&(deckj1.isEmpty()==false&&deckj2.isEmpty()==false)) {
+		while(referee.isEndGame(10,deckj1,deckj2,rackj1, rackj2, compteurTour)) {
 			if (firstPick==1){
-				System.out.print("J1 ");
-				tour.choixTour(deckj1, rackj1, plateau, compteurTour, j1);
+				System.out.print("J1 - Rack : ");
+				tour.choiceOfTurn(deckj1, rackj1, gameboard, compteurTour, j1);
 				System.out.println(j1.getPoints()+" points");
+				System.out.println("Nombre de tuiles posées : "+(36-(deckj1.getDeck().size()+rackj1.getRack().size())));
 				compteurTour++;
-				System.out.print("J2 ");
-				tour.choixTour(deckj2,rackj2, plateau,compteurTour, j2);
+				System.out.print("J2 - Rack : ");
+				tour.choiceOfTurn(deckj2,rackj2, gameboard,compteurTour, j2);
 				System.out.println(j2.getPoints()+" points");
+				System.out.println("Nombre de tuiles posées : "+(36-(deckj2.getDeck().size()+rackj2.getRack().size())));
+				System.out.println("Nombre de tours :"+compteurTour);
 			}else {
-				System.out.print("J2 ");
-				tour.choixTour(deckj2,rackj2, plateau,compteurTour,j2);
+				System.out.print("J2 - Rack : ");
+				tour.choiceOfTurn(deckj2,rackj2, gameboard,compteurTour,j2);
 				System.out.println(j2.getPoints()+" points");
+				System.out.println("Nombre de tuiles posées : "+(36-(deckj2.getDeck().size()+rackj2.getRack().size())));
 				compteurTour++;
-				System.out.print("J1 ");
-				tour.choixTour(deckj1, rackj1, plateau, compteurTour,j1);
+				System.out.print("J1 - Rack : ");
+				tour.choiceOfTurn(deckj1, rackj1, gameboard, compteurTour,j1);
 				System.out.println(j1.getPoints()+" points");
+				System.out.println("Nombre de tuiles posées : "+(36-(deckj1.getDeck().size()+rackj1.getRack().size())));
+				System.out.println("Nombre de tours :"+compteurTour);
 
 			}
 		}
+		
+		
 	}
 
 }
