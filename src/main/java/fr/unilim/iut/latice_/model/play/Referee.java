@@ -11,27 +11,33 @@ import fr.unilim.iut.latice_.model.tiles.decks.Deck;
 import fr.unilim.iut.latice_.model.tiles.decks.Rack;
 
 public class Referee {
-	public ArrayList<Tile> addTilesNextTo (ArrayList<Tile> tilesPlacees,Tile tile){
+	public static void message(String text) {
+		System.out.println(text);
+	}
+	//add tiles in arraylist next to the tile selected
+	public ArrayList<Tile> addTilesNextTo (ArrayList<Tile> tilesPut,Tile tile){
 		ArrayList<Tile> listTiles = new ArrayList();
 		Integer pos1Tile = tile.position.getX();
 		Integer pos2Tile = tile.position.getY();
-		for (int i=0;i<tilesPlacees.size();i++) {
-			Integer pos1TileList = tilesPlacees.get(i).position.getX();
-			Integer pos2TileList = tilesPlacees.get(i).position.getY();
+		for (int i=0;i<tilesPut.size();i++) {
+			Integer pos1TileList = tilesPut.get(i).position.getX();
+			Integer pos2TileList = tilesPut.get(i).position.getY();
 			if((pos1TileList==pos1Tile&&(pos2Tile==pos2TileList+1 || pos2Tile==pos2TileList-1))||(pos2TileList==pos2Tile&&(pos1Tile==pos1TileList+1 || pos1Tile==pos1TileList-1)))
-				listTiles.add(tilesPlacees.get(i));
+				listTiles.add(tilesPut.get(i));
 		}
 		return listTiles;
 	}
+	
+	//verify with neighbor tiles if tile chosen by the player can be put to the gameboard case 
 	public boolean verifCase(ArrayList<Tile> tilesNextTo,Tile tile) {
 		if(tilesNextTo.isEmpty()){
 			return false;
 		}else {
 		for (int i=0;i<tilesNextTo.size();i++) {
-			Tile tileAVerif = tilesNextTo.get(i);
-			Color CouleurTileAVerif = tileAVerif.color();
-			Shape FormeTileAVerif = tileAVerif.shape();
-			if((CouleurTileAVerif!=tile.color()&&FormeTileAVerif!=tile.shape())){
+			Tile tileToVerif = tilesNextTo.get(i);
+			Color colorTileToVerif = tileToVerif.color();
+			Shape formTileToVerif = tileToVerif.shape();
+			if((colorTileToVerif!=tile.color()&&formTileToVerif!=tile.shape())){
 				return false;
 			}
 		}
@@ -39,20 +45,22 @@ public class Referee {
 		return true;
 	}
 	
+	//check if game is finished and announce the winner
 	public boolean isEndGame(int nbMaxOfTurns, Deck deckPlayer1, Deck deckPlayer2,Rack rackPlayer1, Rack rackPlayer2, Integer numberOfTurns) {
 		if(!deckPlayer1.isEmpty()&&!deckPlayer2.isEmpty()&&numberOfTurns!=nbMaxOfTurns) {
 			return true;
 		}else {
 			if (((36-(deckPlayer1.getDeck().size()+rackPlayer1.getRack().size()))>(36-(deckPlayer2.getDeck().size()+rackPlayer2.getRack().size()))&&numberOfTurns==nbMaxOfTurns)||deckPlayer1.isEmpty()) {
-				System.out.println("Le joueur 1 a gagné !");
+				message("Le joueur 1 a gagné !");
 			}else {
-				System.out.println("Le joueur 2 a gagné !");
+				message("Le joueur 2 a gagné !");
 			}
 			return false;
 		}
 		
 	}
 	
+	//add points to player concerned if tile put is eligible
 	public void addPoints(Gameboard gameboard,Player player,ArrayList<Tile> tilesNextTo,Tile tile) {
 
 		if(tilesNextTo.size()==2) {

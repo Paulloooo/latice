@@ -5,6 +5,7 @@ public class Tile {
 	private Shape shape;
 	public Position position;
 	
+	//constructor of the tile with 3 specifications : color, shape and position
 	public Tile(Color color, Shape shape,Position position) {
 		this.color = color;
 		this.shape = shape;
@@ -30,3 +31,4 @@ public class Tile {
 
 	
 }
+ 

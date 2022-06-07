@@ -18,7 +18,8 @@ import fr.unilim.iut.latice_.model.tiles.decks.StandardDeck;
 
 
 public class LaticeApplicationConsole {
-
+	
+	
 	public static void main(String[] args) {
 		ArrayList<Player> listePlayers = new ArrayList<Player>();
 		ArrayList<Tile> listeTilesPlacees = new ArrayList<Tile>();
@@ -45,23 +46,23 @@ public class LaticeApplicationConsole {
 		while(referee.isEndGame(10,deckj1,deckj2,rackj1, rackj2, compteurTour)) {
 			if (firstPick==1){
 				System.out.println("J1 - Rack : "+rackj1.getRack());
-				tour.choiceOfTurn(deckj1, rackj1, gameboard, compteurTour, j1, j1.points);
+				tour.choiceOfTurn(deckj1, rackj1, gameboard, compteurTour, j1, j1.points, 1);
 				System.out.println(j1.points+" points");
 				System.out.println("Nombre de tuiles posées : "+(36-(deckj1.getDeck().size()+rackj1.getRack().size())));
 				compteurTour++;
 				System.out.println("J2 - Rack : "+rackj2.getRack());
-				tour.choiceOfTurn(deckj2,rackj2, gameboard,compteurTour, j2, j2.points);
+				tour.choiceOfTurn(deckj2,rackj2, gameboard,compteurTour, j2, j2.points, 1);
 				System.out.println(j2.points+" points");
 				System.out.println("Nombre de tuiles posées : "+(36-(deckj2.getDeck().size()+rackj2.getRack().size())));
 				System.out.println("Nombre de tours :"+compteurTour);
 			}else {
 				System.out.println("J2 - Rack : "+rackj2.getRack());
-				tour.choiceOfTurn(deckj2,rackj2, gameboard,compteurTour,j2,j2.points);
+				tour.choiceOfTurn(deckj2,rackj2, gameboard,compteurTour,j2,j2.points, 1);
 				System.out.println(j2.points+" points");
 				System.out.println("Nombre de tuiles posées : "+(36-(deckj2.getDeck().size()+rackj2.getRack().size())));
 				compteurTour++;
-				System.out.print("J1 - Rack : "+rackj1.getRack());
-				tour.choiceOfTurn(deckj1, rackj1, gameboard, compteurTour,j1,j1.points);
+				System.out.println("J1 - Rack : "+rackj1.getRack());
+				tour.choiceOfTurn(deckj1, rackj1, gameboard, compteurTour,j1,j1.points, 1);
 				System.out.println(j1.points+" points");
 				System.out.println("Nombre de tuiles posées : "+(36-(deckj1.getDeck().size()+rackj1.getRack().size())));
 				System.out.println("Nombre de tours :"+compteurTour);

@@ -12,6 +12,8 @@ public class Stack {
 	private Tile tile;
 	public ArrayList tiles;
 	
+	//constructor of the type stack which to build decks 
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(tiles, tile);
@@ -35,21 +37,7 @@ public class Stack {
 	    
     public boolean isEmpty() {
     	return tiles.isEmpty();
-	}
-	    
-	    
-    public boolean put(Tile...otherTiles) {
-    	if (otherTiles.length==0) {
-	   		return false;
-	   	}
-	   	for(Tile tile : otherTiles) {
-	   		if(tile!=null) {
-    			this.tiles.add(tile);	    		
-    		}
-	   	}
-			return true;
-    }
-	    
+	}    
 	    
 	public Integer remainingTiles() {
     	return(tiles.size());
@@ -59,9 +47,6 @@ public class Stack {
 		return(tiles);
 	}
 		
-	public void clear() {
-		tiles.clear();
-	}
 	
 	public Boolean put(Collection<Tile> newTiles) {
 		if(newTiles.isEmpty()) {
@@ -84,15 +69,6 @@ public class Stack {
 		return(drawnCard);
 	}
 	
-	public Tile searchStringTileIntoDeck(String tile) {
-		Tile tileSearched = null;
-		for (int i=0;i<tiles.size();i++) {
-			if (tiles.get(i).toString().equals(tile)) {
-				tileSearched = (Tile) tiles.get(i);
-			}
-		}
-		return tileSearched;
-	}
 	
 }
 

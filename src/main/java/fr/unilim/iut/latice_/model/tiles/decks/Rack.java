@@ -11,7 +11,7 @@ public class Rack extends Deck{
 		super();
 	}
 
-	public void buildRack(ArrayList deck) {
+	public void buildRack(ArrayList<Tile> deck) {
 		for(int i=0;i<5;i++) {
 		    int random_int = (int)Math.floor(Math.random()*deck.size());
 			while(rack.contains(deck.get(random_int))) {
@@ -47,6 +47,13 @@ public class Rack extends Deck{
 			}
 		}
 		return tileSearched;
+	}
+	
+	public void addRemainingTiles() {
+		for (int i=0;i<rack.size();i++) {
+			deck.add(rack.get(i));
+			deck.remove(i);
+		}
 	}
 
 	

@@ -12,71 +12,59 @@ import fr.unilim.iut.latice_.model.tiles.Tile;
 public class Gameboard {
 	public String[][] gameboard;
 	
+	public static void message(String text) {
+		System.out.println(text);
+	}
+	//generate a latice gameboard in console
 	public Gameboard(){
 	this.gameboard = new String[9][9];
-	for (int i = 0; i < 9; i++) {
+	for (int caseIndice = 0; caseIndice < 9; caseIndice++) {
 		for (int j = 0; j < 9; j++) {
-			Normal testcase = new Normal();
-			gameboard[i][j]=testcase.apparence();
-			if (i==4&j==4){
-				gameboard[i][j]="";
-				Moon testcasemoon = new Moon();
-				gameboard[i][j]=testcasemoon.apparence();
+			Normal gameboardCase = new Normal();
+			gameboard[caseIndice][j]=gameboardCase.apparence();
+			if (caseIndice==4&j==4){
+				gameboard[caseIndice][j]="";
+				Moon caseMoon = new Moon();
+				gameboard[caseIndice][j]=caseMoon.apparence();
 			}
 		}
-		if(i==0) {
-			Sun testcaseSun = new Sun();
-			gameboard[i][0]=testcaseSun.apparence();
-			gameboard[i][4]=testcaseSun.apparence();
-			gameboard[i][8]=testcaseSun.apparence();
+		if(caseIndice==0||caseIndice==8) {
+			Sun caseSun = new Sun();
+			gameboard[caseIndice][0]=caseSun.apparence();
+			gameboard[caseIndice][4]=caseSun.apparence();
+			gameboard[caseIndice][8]=caseSun.apparence();
 		}
-		if(i==1) {
-			Sun testcaseSun = new Sun();
-			gameboard[i][1]=testcaseSun.apparence();
-			gameboard[i][7]=testcaseSun.apparence();		
+		if(caseIndice==1||caseIndice==7) {
+			Sun caseSun = new Sun();
+			gameboard[caseIndice][1]=caseSun.apparence();
+			gameboard[caseIndice][7]=caseSun.apparence();		
 		}
-		if(i==2) {
-			Sun testcaseSun = new Sun();
-			gameboard[i][2]=testcaseSun.apparence();
-			gameboard[i][6]=testcaseSun.apparence();		
-		}
-		if(i==6) {
-			Sun testcaseSun = new Sun();
-			gameboard[i][2]=testcaseSun.apparence();
-			gameboard[i][6]=testcaseSun.apparence();		
-		}
-		if(i==7) {
-			Sun testcaseSun = new Sun();
-			gameboard[i][1]=testcaseSun.apparence();
-			gameboard[i][7]=testcaseSun.apparence();		
-		}
-		if(i==8) {
-			Sun testcaseSun = new Sun();
-			gameboard[i][0]=testcaseSun.apparence();
-			gameboard[i][4]=testcaseSun.apparence();
-			gameboard[i][8]=testcaseSun.apparence();
+		if(caseIndice==2||caseIndice==6) {
+			Sun caseSun = new Sun();
+			gameboard[caseIndice][2]=caseSun.apparence();
+			gameboard[caseIndice][6]=caseSun.apparence();		
 		}
 }
 }
 	public void showGameboard(Gameboard gameboard) {
 		for(int i=0;i<9;i++){
-			System.out.println(Arrays.toString(gameboard.gameboard[i])+"\n");
+			message(Arrays.toString(gameboard.gameboard[i])+"\n");
 		}
 	}
-	public void setTileAtPosition(Tile tile, int i, int j) {
-		gameboard[i][j] = tile.toString();	
+	public void setTileAtPosition(Tile tile, int pos1, int pos2) {
+		gameboard[pos1][pos2] = tile.toString();	
 	}
 	
-	public String getTileAtPosition(int i, int j) {
-		return gameboard[i][j];
+	public String getTileAtPosition(int pos1, int pos2) {
+		return gameboard[pos1][pos2];
 	}
 	
-	public boolean isEmpty(int i, int j) {
-		return (gameboard[i][j]=="  " || gameboard[i][j]=="M " || gameboard[i][j]=="S " );
+	public boolean isEmpty(int pos1, int pos2) {
+		return (gameboard[pos1][pos2]=="  " || gameboard[pos1][pos2]=="M " || gameboard[pos1][pos2]=="S " );
 	}
 	
-	public boolean isSunCase(int i, int j) {
-		return (gameboard[i][j]=="S " );
+	public boolean isSunCase(int pos1, int pos2) {
+		return (gameboard[pos1][pos2]=="S " );
 	}
 	
 

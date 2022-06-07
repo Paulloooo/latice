@@ -44,7 +44,6 @@ public class DndImageController {
 		            /* allow for both copying and moving, whatever user chooses */
 		            event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
 		        }
-		        
 		        event.consume();
 		    }
 		});
@@ -67,6 +66,7 @@ public class DndImageController {
 		        	ImageView image = new ImageView(db.getImage());
 		        	image.setFitHeight(40);
 		        	image.setFitWidth(40);
+		        	
 		        	if(laticeController.getCompteurTour()==0) {
 		        		laticeController.actionPoser(tile,4,4);
 		        		target.add(image, 4, 4);
@@ -76,14 +76,16 @@ public class DndImageController {
 			        	target.setDisable(true);
 			        	success = true;
 		        	}else{
-		        		if(laticeController.actionPoser(tile,y,x)) {; 
+		        		if(laticeController.actionPoser(tile,y,x)) { 
 				        	target.add(image, x, y);
 				        	target.setValignment(image, VPos.CENTER);
 				        	target.setHalignment(image, HPos.CENTER);
 				        	source.setVisible(false);
 				        	success = true;
 		        		}
-					};
+					}
+
+		        	success = true;
 		        }
 
 		        event.setDropCompleted(success);

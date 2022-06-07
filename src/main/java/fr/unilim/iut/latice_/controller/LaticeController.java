@@ -103,26 +103,8 @@ public class LaticeController {
 		deckj2.buildDeck(StdDeck.tiles);
 		rackj1.buildRack(deckj1.getDeck());
 		rackj2.buildRack(deckj2.getDeck());
-	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
-	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
-	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
-	    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
-	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
-	    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
-	    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
-	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
-	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
-	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
-	    DndImageController.manageSourceDragAndDrop(imgdeck1);
-	    DndImageController.manageSourceDragAndDrop(img2deck1);
-	    DndImageController.manageSourceDragAndDrop(img3deck1);
-	    DndImageController.manageSourceDragAndDrop(img4deck1);
-	    DndImageController.manageSourceDragAndDrop(img5deck1);
-	    DndImageController.manageSourceDragAndDrop(imgdeck2);
-	    DndImageController.manageSourceDragAndDrop(img2deck2);
-	    DndImageController.manageSourceDragAndDrop(img3deck2);
-	    DndImageController.manageSourceDragAndDrop(img4deck2);
-	    DndImageController.manageSourceDragAndDrop(img5deck2);
+	    deck1init();
+	    deck2init();	
 
 	    DndImageController.manageSourceTargetAndDrop(gameboard);
 	    
@@ -137,23 +119,37 @@ public class LaticeController {
 			joueurPlay.setText("Le joueur 2 joue.");
 		}
 	}
-	public void initTiles(Rack rack) throws FileNotFoundException {
-	    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+	private void deck2init() throws FileNotFoundException {
+		imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
+	    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
+	    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
+	    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
+	    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));
+	    DndImageController.manageSourceDragAndDrop(imgdeck2);
+	    DndImageController.manageSourceDragAndDrop(img2deck2);
+	    DndImageController.manageSourceDragAndDrop(img3deck2);
+	    DndImageController.manageSourceDragAndDrop(img4deck2);
+	    DndImageController.manageSourceDragAndDrop(img5deck2);
+	}
+	private void deck1init() throws FileNotFoundException {
+		imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
 	    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
 	    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
 	    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
 	    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+	    DndImageController.manageSourceDragAndDrop(imgdeck1);
+	    DndImageController.manageSourceDragAndDrop(img2deck1);
+	    DndImageController.manageSourceDragAndDrop(img3deck1);
+	    DndImageController.manageSourceDragAndDrop(img4deck1);
+	    DndImageController.manageSourceDragAndDrop(img5deck1);
 	}
+
 	public void changerackj1() throws FileNotFoundException {
 		if (j1.actions>=1) {
 			rackj1.clear();
 			rackj1.buildRack(deckj1.getDeck());
 			System.out.println(rackj1.getRack().get(0));
-		    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
-		    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
-		    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
-		    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));		
-		    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+		    deck1init();
 		    j1.actions-=1;
 		}else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -170,11 +166,7 @@ public class LaticeController {
 		if (j2.actions>=1) {
 			rackj2.clear();
 			rackj2.buildRack(deckj2.getDeck());
-		    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));		
-		    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
-		    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));		
-		    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
-		    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));
+		    deck2init();
 		    j2.actions-=1;
 		}else {
 			Alert alert = new Alert(AlertType.INFORMATION);
@@ -188,135 +180,49 @@ public class LaticeController {
 	}
 	
 	 boolean actionPoser(String imgViewTile, Integer pos1, Integer pos2) {
+  	     Integer tileOfRackSelected;
 		 if(actualPlayer.actions>0) {
 			 switch(imgViewTile){
 		       case "imgdeck1": 
+		    	   tileOfRackSelected = 0;
 		    	   System.out.print("J1 :");
-		    	   Tile tilePosee = (Tile) rackj1.getRack().get(0);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj1.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j1.actions-=1;
-		    	   break;
+		    	   return(j1TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img2deck1": 
+		    	   tileOfRackSelected = 1;
 		    	   System.out.print("J1 :");
-		    	   tilePosee = (Tile) rackj1.getRack().get(1);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj1.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j1.actions-=1;
-		    	   break;
+		    	   return(j1TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img3deck1": 
+		    	   tileOfRackSelected = 2;
 		    	   System.out.print("J1 :");
-		    	   tilePosee = (Tile) rackj1.getRack().get(2);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj1.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j1.actions-=1;
-		    	   break;
+		    	   return(j1TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img4deck1": 
+		    	   tileOfRackSelected = 3;
 		    	   System.out.print("J1 :");
-		    	   tilePosee = (Tile) rackj1.getRack().get(3);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj1.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j1.actions-=1;
-		    	   break;
+		    	   return(j1TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img5deck1": 
+		    	   tileOfRackSelected = 4;
 		    	   System.out.print("J1 :");
-		    	   tilePosee = (Tile) rackj1.getRack().get(4);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj1.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j1.actions-=1;
-		    	   break;
+		    	   return(j1TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "imgdeck2": 
+		    	   tileOfRackSelected = 0;
 		    	   System.out.print("J2 :");
-		    	   tilePosee = (Tile) rackj2.getRack().get(0);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj2.removeTileOfRack(tilePosee); 
-		    	   compteurTour++;
-				   System.out.println(compteurTour);
-				   j2.actions-=1;
-		    	   break;
+		    	   return(j2TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img2deck2": 
+		    	   tileOfRackSelected = 1;
 		    	   System.out.print("J2 :");
-		    	   tilePosee = (Tile) rackj2.getRack().get(1);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   verifTiles(tilePosee, compteurTour);
-		    	   rackj2.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j2.actions-=1;
-		    	   break;
+		    	   return(j2TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img3deck2": 
+		    	   tileOfRackSelected = 2;
 		    	   System.out.print("J2 :");
-		    	   tilePosee = (Tile) rackj2.getRack().get(2);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj2.removeTileOfRack(tilePosee);
-				   compteurTour++;
-				   System.out.println(compteurTour);
-				   j2.actions-=1;
-		    	   break;
+		    	   return(j2TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img4deck2": 
+		    	   tileOfRackSelected = 3;
 		    	   System.out.print("J2 :");
-		    	   tilePosee = (Tile) rackj2.getRack().get(3);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-		    	   rackj2.removeTileOfRack(tilePosee);
-				   j2.actions-=1;
-				   compteurTour++;
-				   System.out.println(compteurTour);
-		    	   break;
+		    	   return(j2TilePosed(pos1, pos2, tileOfRackSelected));
 		       case "img5deck2": 
+		    	   tileOfRackSelected = 4;
 		    	   System.out.print("J2 :");
-		    	   tilePosee = (Tile) rackj2.getRack().get(4);
-		    	   tilePosee.position.setX(pos1);
-		    	   tilePosee.position.setY(pos2);
-		    	   if (verifTiles(tilePosee, compteurTour)==false) {
-		    		   return false;
-		    	   };
-				   compteurTour++;
-				   j2.actions-=1;
-				   System.out.println(compteurTour);
-		    	   break;
+		    	   return(j2TilePosed(pos1, pos2, tileOfRackSelected));
 		       default:
 		           System.out.println("Choix incorrect");
 		           break;
@@ -324,17 +230,43 @@ public class LaticeController {
 					Alert alert = new Alert(AlertType.INFORMATION);
 					alert.setTitle("Erreur");
 					alert.setHeaderText("Attention ");
-					alert.setContentText("Vous n'avez pas assez d'actions pour changer votre rack");
+					alert.setContentText("Vous n'avez pas assez d'actions pour jouer une tuile");
 
 					alert.showAndWait();
 					return false;
 			 }
 			return true;
-		 };
+		 }
+	private boolean j2TilePosed(Integer pos1, Integer pos2, Integer tileSelected) {
+		   Tile tilePosee = (Tile) rackj2.getRack().get(tileSelected);
+		   tilePosee.position.setX(pos1);
+		   tilePosee.position.setY(pos2);
+		   if (verifTiles(tilePosee, compteurTour)==false) {
+			   return false;
+		   };
+		   rackj2.removeTileOfRack(tilePosee); 
+		   compteurTour++;
+		   System.out.println(compteurTour);
+		   j2.actions-=1;
+		   return true;
+	}
+	private boolean j1TilePosed(Integer pos1, Integer pos2, Integer tileSelected) {
+		Tile tilePosee = (Tile) rackj1.getRack().get(tileSelected);
+		tilePosee.position.setX(pos1);
+		tilePosee.position.setY(pos2);
+		if (verifTiles(tilePosee, compteurTour)==false) {
+	       return false;
+		};
+		   rackj1.removeTileOfRack(tilePosee);
+		   compteurTour++;
+		   System.out.println(compteurTour);
+		   j1.actions-=1;
+		return true;
+	};
 	boolean verifTiles(Tile tile, Integer compteur) {
 		Turn tour = new Turn();
 		if(compteur==0){
-			tour.firstTour(tile,gameboardBack, listeTilesPlacees);
+			tour.firstTurn(tile,gameboardBack, listeTilesPlacees);
 		}else {
 			if(tour.confirmationOfTilePut(tile, gameboardBack, actualPlayer,listeTilesPlacees)==null) {
 				return false;
@@ -358,17 +290,7 @@ public class LaticeController {
 		    	for(int i=0;i<5-rackj2.getRack().size();i++) {
 		    	   this.rackj2.getRack().add(deckj2.draw());
 		    	}
-			    imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));
-			    imgdeck2.setVisible(true);
-			    img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
-			    img2deck2.setVisible(true);
-			    img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));	
-			    img3deck2.setVisible(true);
-			    img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
-			    img4deck2.setVisible(true);
-			    img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
-			    img5deck2.setVisible(true);
-				idDeck2.setVisible(true);
+			    setImagesVisibleRackJ2();
 				joueurPlay.setText("Le joueur 2 joue.");
 			}else {
 				idDeck2.setVisible(false);
@@ -381,17 +303,7 @@ public class LaticeController {
 		    	for(int i=0;i<5-rackj1.getRack().size();i++) {
 		    	   this.rackj1.getRack().add(deckj1.draw());
 		   	   }
-			    imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
-			    imgdeck1.setVisible(true);
-			    img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
-			    img2deck1.setVisible(true);
-			    img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
-			    img3deck1.setVisible(true);
-			    img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));	
-			    img4deck1.setVisible(true);
-			    img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
-			    img5deck1.setVisible(true);
-				idDeck.setVisible(true);
+			    setImagesRackJ1Visible();
 				joueurPlay.setText("Le joueur 1 joue.");
 			}
 		}else {
@@ -404,6 +316,32 @@ public class LaticeController {
 		}
 		compteurTour++;
     }
+	private void setImagesVisibleRackJ2() throws FileNotFoundException {
+		imgdeck2.setImage(TileGameView.generateImageFromTile(rackj2, 0));
+		imgdeck2.setVisible(true);
+		img2deck2.setImage(TileGameView.generateImageFromTile(rackj2, 1));
+		img2deck2.setVisible(true);
+		img3deck2.setImage(TileGameView.generateImageFromTile(rackj2, 2));	
+		img3deck2.setVisible(true);
+		img4deck2.setImage(TileGameView.generateImageFromTile(rackj2, 3));
+		img4deck2.setVisible(true);
+		img5deck2.setImage(TileGameView.generateImageFromTile(rackj2, 4));	
+		img5deck2.setVisible(true);
+		idDeck2.setVisible(true);
+	}
+	private void setImagesRackJ1Visible() throws FileNotFoundException {
+		imgdeck1.setImage(TileGameView.generateImageFromTile(rackj1, 0));
+		imgdeck1.setVisible(true);
+		img2deck1.setImage(TileGameView.generateImageFromTile(rackj1, 1));
+		img2deck1.setVisible(true);
+		img3deck1.setImage(TileGameView.generateImageFromTile(rackj1, 2));
+		img3deck1.setVisible(true);
+		img4deck1.setImage(TileGameView.generateImageFromTile(rackj1, 3));	
+		img4deck1.setVisible(true);
+		img5deck1.setImage(TileGameView.generateImageFromTile(rackj1, 4));
+		img5deck1.setVisible(true);
+		idDeck.setVisible(true);
+	}
     
     @FXML
     void buyActionj1(ActionEvent event) throws FileNotFoundException{
