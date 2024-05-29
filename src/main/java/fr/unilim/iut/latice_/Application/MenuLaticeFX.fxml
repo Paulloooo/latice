@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: lightblue;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.unilim.iut.latice_.controller.MenuController">
+   <children>
+      <Label layoutX="150.0" layoutY="70.0" text="LATICE" textFill="#d92323">
+         <font>
+            <Font name="Berlin Sans FB" size="65.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnNewGame" layoutX="168.0" layoutY="212.0" mnemonicParsing="false" onAction="#launchLaticeGame" prefHeight="54.0" prefWidth="163.0" text="New game">
+         <font>
+            <Font name="Berlin Sans FB" size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnQuit" layoutX="168.0" layoutY="370.0" mnemonicParsing="false" onAction="#quitLaticeGame" prefHeight="54.0" prefWidth="163.0" text="Quitter">
+         <font>
+            <Font name="Berlin Sans FB" size="23.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnRules" layoutX="168.0" layoutY="293.0" mnemonicParsing="false" onAction="#showRules" prefHeight="54.0" prefWidth="163.0" text="Règles">
+         <font>
+            <Font name="Berlin Sans FB" size="23.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="663.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/18">
+   <children>
+      <Label layoutX="254.0" layoutY="14.0" text="Rules">
+         <font>
+            <Font name="Berlin Sans FB Demi Bold" size="39.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="108.0" maxWidth="530.0" prefHeight="74.0" prefWidth="530.0" text="Latice est un jeu de stratégie où vous devez associer des tuiles (tiles) par couleur et par forme. La plupart des tuiles contiennent une image parmi six (tortue, plume, lézard, dophin, fleur, oiseau) et une couleur parmi six. Latice a été créé pour être joué de 2 à 4 joueurs. " textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Tw Cen MT" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="35.0" layoutY="219.0" maxWidth="530.0" prefHeight="88.0" prefWidth="530.0" text="Le joueur ayant posé toutes ses tuiles gagne. Le premier joueur choisit une tuile depuis sa main (rack) et la place au centre du plateau. Le joueur suivant, et à chaque tour, doit ajouter une tuile sur le plateau, mais cette tuile doit être adjacente à une autre tuile de même couleur ou forme." textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Tw Cen MT" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="340.0" maxWidth="530.0" prefHeight="102.0" prefWidth="530.0" text="Si le joueur ne peut pas poser de tuiles, il pioche depuis son deck. Si la tuile est adjacente à plusieurs, le joueur l'ayant posée récupère des pierres pouvant être échangés contre des tours supplémentaires, permettant de vider sa main plus rapidement. " textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Tw Cen MT" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="463.0" maxWidth="530.0" prefHeight="102.0" prefWidth="530.0" text="A force de jouer, vous apprendrez à planifier à l'avance vos tours et coups supplémentaires. Vous utiliserez plus stratégiquement vos tuiles de vent pour altérer le plateau et jouer tant défensivement qu'offensivement selon vos tuiles restantes." textAlignment="JUSTIFY" wrapText="true">
+         <font>
+            <Font name="Tw Cen MT" size="15.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnClose" layoutX="260.0" layoutY="586.0" mnemonicParsing="false" text="Quitter">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="23.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
